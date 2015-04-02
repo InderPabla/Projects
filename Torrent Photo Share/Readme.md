@@ -7,7 +7,7 @@ Step 2: Go to File -> New -> Project.
 
 
 Step 3: New window will pop up called New Project. Select Java Project, and then click Next.
-![Alt text](https://github.com/InderPabla/Projects/tree/master/Torrent%20Photo%20Share/Images/1.PNG "Optional title") 
+![ScreenShot](https://github.com/InderPabla/Projects/tree/master/Torrent%20Photo%20Share/Images/1.PNG) 
 
 Step 4: A new window will pop up named New Java Project. Name your project anything you wish. Pick version JavaSE-1.7, and then click Finish. 
  
