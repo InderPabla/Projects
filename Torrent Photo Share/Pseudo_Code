@@ -2,7 +2,7 @@ P2P Photo Album Pseudo Code
 NOTE: The P2P client and P2P server are ONE program (executable) so they are treated as such in the Pseudo code.
 Directory Server: 
 //Start the server and create the necessary TCP connections.
-start_server 
+####start_server 
 
 Spawn thread to listen for the DHT servers to connect
 Get user input to determine whether this is server #1
@@ -42,9 +42,9 @@ ENDIF
 init
 
 IF server #1 and has not resolved all the DHT server IPS
-Wait on UDP connection for clients to connect
-Connect to client and confirm connection
-Request next server in the DHT ring for their IPs
+	Wait on UDP connection for clients to connect
+	Connect to client and confirm connection
+	Request next server in the DHT ring for their IPs
 ELSEIF Server #1 and resolved all the DHT server IPs
 	Send all of the IP addresses to the requesting client
 ELSE
@@ -102,7 +102,7 @@ ELSEIF Server #1
 ELSEIF hash value does NOT equal to the current DHT server
 	Send update request next DHT server along with the hashed content name and content name.
 ELSEIF hash value equals the current DHT server
-Search records for content name
+	Search records for content name
 	Get associated IP address of the P2P server
 	Send confirmation message with IP address of P2P server to next DHT server
 ENDIF
