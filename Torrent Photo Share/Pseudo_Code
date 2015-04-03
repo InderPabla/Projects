@@ -1,8 +1,10 @@
 P2P Photo Album Pseudo Code
 NOTE: The P2P client and P2P server are ONE program (executable) so they are treated as such in the Pseudo code.
+
 Directory Server: 
+
 //Start the server and create the necessary TCP connections.
-####start_server 
+-----start_server-----
 
 Spawn thread to listen for the DHT servers to connect
 Get user input to determine whether this is server #1
@@ -27,7 +29,7 @@ ENDIF
 
 
 //Thread that listens for server #1 to connect to it to establish the necessary connections.
-listenForServers
+-----listenForServers-----
 
 Listen for TCP connection from other servers.
 IF connection established
@@ -39,7 +41,7 @@ ENDIF
 
 
 //Thread that runs continuously and checks for new users
-init
+-----init-----
 
 IF server #1 and has not resolved all the DHT server IPS
 	Wait on UDP connection for clients to connect
@@ -55,7 +57,7 @@ ENDIF
 	
 
 //Update the server record if client requests it
-update
+-----update-----
 
 IF server #1
 	Listen to the UDP connection for and update request from client
@@ -74,7 +76,7 @@ ELSEIF hash value equals the current DHT server
 ENDIF
 
 //handles confirmation messages and sends them back to the client
-confirmation
+-----confirmation-----
 
 IF server #1
 	Send confirmation message to the client that serviced the request.
@@ -84,7 +86,7 @@ ENDIF
 
 
 //get content from server to resolve the P2P server’s IP address
-content_query
+-----content_query-----
 
 IF Server #1 and received a query request form server #4
 	Send requesting client error code “404 content not found”
@@ -108,7 +110,7 @@ ELSEIF hash value equals the current DHT server
 ENDIF
 
 //remove all content records and remove all UDP connections.
-exit
+-----exit-----
 
 IF Server #1 and get an exit request from previous DHT server
 	Send confirmation message to client. 
@@ -124,8 +126,9 @@ ENDIF
 
 
 P2P Client and P2P Server:
+
 //Establish initial connection to distributed servers using server #1
-init
+-----init-----
 
 Connect to UDP connection of distributed server #1
 Connect and confirm
@@ -133,7 +136,7 @@ Wait to receive the IP address of the other three servers
 Store the 3 DHT server IP addresses
 
 //inform the associated DHT server about new content
-inform
+-----inform-----
 
 Hash the content name of the content the Client wishes to store
 Connect to UDP connection of distributed server #1
@@ -143,7 +146,7 @@ Wait for confirmation message from server.
 Store local record with content name, DHT server and the P2P server’s IP address.
 
 //inform the associated DHT server about new content
-query
+-----query-----
 
 Hash the content’s name into DHT server ID
 Connect to UDP connection of distributed server #1
@@ -157,7 +160,7 @@ ELSEIF
 ENDIF
 
 //exit and remove all content stored on servers 
-exit
+-----exit-----
 
 Connect to UDP connection of distributed server #1
 Connect and confirm
@@ -165,11 +168,8 @@ Send exit request to server #1
 Wait for confirmation message.
 
 
-
-
-
 //get file from a P2P server
-file_request
+-----file_request-----
 
 IF client has IP address of the P2P server where the Image is stored
 	Establish TCP connection with other P2P server
@@ -184,7 +184,7 @@ ELSE
 ENDIF
 
 //Establish base TCP connection to allow Multithread TCP connections 
-file_transfer
+-----file_transfer-----
 
 Listen on a TCP connection
 IF other client connects to this P2P server.
@@ -193,7 +193,7 @@ ENDIF
 
 
 //Thread that transfers the image to the requesting P2P client
-image_transfer
+-----image_transfer-----
 
 Create a new TCP connection to P2P Client
 Close original TCP connection
