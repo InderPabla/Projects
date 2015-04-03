@@ -1,1 +1,7 @@
-C# Scripts, images and blender files in /Unity3D Rocket Physics Assets/ShipPhysicsScripts
+ShipPhysicsScripts contains
+  -C# Scripts
+  -Images 
+  -Blender files
+  
+  To play game on Android, install from
+    https://play.google.com/store/apps/details?id=com.ZedSpace.Space_Escape&hl=en
