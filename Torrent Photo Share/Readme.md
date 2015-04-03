@@ -1,5 +1,9 @@
-Platform - Eclipse 
+## Torrent photo share
+Torrent photo share is a peer-to-peer photo sharing service. It allows transfer of photos between peers using central DHT server system to keep track of all files. Peers can upload file names to DHT, and other peers can access these files by prompting DHT the name. 
+######(For more information, please check out the pseudo code)
 
+## Setup
+####Platform - Eclipse 
 Create A Project in Eclipse
 Step 1: Start Eclipse on a computer and create a workspace
 
