@@ -14,12 +14,12 @@ IF server 1
 			Retry if timeout, continue Loop if new IP address needed 
 		CASE which server is connecting
 			First server to connect: 
-Establish TCP connection between server 2 and server 1.
+				Establish TCP connection between server 2 and server 1.
 			Second server to connect: 
-Establish TCP connection between server 2 and server 3
+				Establish TCP connection between server 2 and server 3
 			Third server to connect:
-Establish TCP connection between server 3 and server 4
-Establish TCP connection between server 4 and server 1
+				Establish TCP connection between server 3 and server 4
+				Establish TCP connection between server 4 and server 1
 		ENDCASE
 	ENDWHILE
 	Close ALL original TCP connection
@@ -31,14 +31,10 @@ listenForServers
 
 Listen for TCP connection from other servers.
 IF connection established
-Wait for assignment of relevant TCP connections
-Assign TCP connections
-Close original TCP connection with server #1
+	Wait for assignment of relevant TCP connections
+	Assign TCP connections
+	Close original TCP connection with server #1
 ENDIF
-
-
-
-
 
 
 
