@@ -1,5 +1,5 @@
 ## Torrent photo share
-Torrent photo share is a peer-to-peer photo sharing service. It allows transfer of photos between peers using central DHT server system to keep track of all files. Peers can upload file names to DHT, and other peers can access these files by prompting DHT the name. 
+Torrent photo share is a peer-to-peer photo sharing service. It allows transfer of photos between peers using central DHT server system to keep track of all files. Peers can upload file names to DHT, and other peers can access these files by prompting DHT the name of the file and the IP of the peer which has the file. Then peer which wants the file can connect to the server side of the peer which has the file and download it. 
 ######(For more information, please check out the pseudo code)
 
 ## Setup
