@@ -21,3 +21,8 @@ Now let’s look at the urls for these sites.
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/6.PNG "Optional Title")
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/7.PNG "Optional Title")
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/8.PNG "Optional Title")
+
+It seems SU, BMO and ^JX are in the exact same location every time. This means that we can divide url into three pieces. First half + Market ID + Second half. Thus any command line arguments we get from our python sprit executions from PHP can we stitched and run.  
+
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/9.PNG "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/10.PNG "Optional Title")
