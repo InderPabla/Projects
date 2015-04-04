@@ -32,5 +32,5 @@
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/11.PNG "Optional Title")
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/12.PNG "Optional Title")
 
-#####Easy :)
+###Easy :)
 
