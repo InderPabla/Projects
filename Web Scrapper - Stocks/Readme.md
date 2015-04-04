@@ -15,3 +15,9 @@ Python has a built in regular expression library which allows was very easy patt
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/5.PNG "Optional Title")
 
 (.+?) = dot matches all characters except a new line, plus matches one or more of characters, ? matching minimum about of characters. Note it would still work with (.) or (.+). Since we know for sure our match would be between h2 or span we want to match as less as possible. 
+
+Now let’s look at the urls for these sites. 
+
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/6.PNG "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/7.PNG "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/8.PNG "Optional Title")
