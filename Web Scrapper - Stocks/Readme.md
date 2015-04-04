@@ -26,3 +26,5 @@ It seems SU, BMO and ^JX are in the exact same location every time. This means t
 
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/9.PNG "Optional Title")
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Web%20Scrapper%20-%20Stocks/Images/10.PNG "Optional Title")
+
+Simple :)
