@@ -16,10 +16,6 @@
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Unity%20Web%20Player%20HTML%20Creator/Images/4.PNG "Optional Title"
 )
 
-######Run index.html on localhost and enter in your specification (unity.php requires local server)
-![Alt text](https://github.com/InderPabla/Projects/blob/master/Unity%20Web%20Player%20HTML%20Creator/Images/4.PNG "Optional Title"
-)
-
 ######Then click Download
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Unity%20Web%20Player%20HTML%20Creator/Images/5.PNG "Optional Title"
 )
