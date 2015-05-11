@@ -1,3 +1,6 @@
+#Does Not Work Anymore!
+####Google Chrome version 42 has come out and has disabled all NPAPI plugins, including the Unity Web Player.
+
 #Unity Web Player HTML Creator
 
 ######Open your Unity Scene, and go to Build Settings.
