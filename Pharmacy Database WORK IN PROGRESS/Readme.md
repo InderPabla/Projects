@@ -1,3 +1,6 @@
+#Project Halted (Working on better Java version)
+
+
 #Pharmacy Database
 
 ####User can log into the database
