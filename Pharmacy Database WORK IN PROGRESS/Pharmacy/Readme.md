@@ -1,3 +1,10 @@
+####Finished
+#####Sample populate, self query and all new inserts.
+
+####Not Finished
+#####All updates and searchs.
+
+
 #Pharmacy Database
 
 ####User can connect to database.
