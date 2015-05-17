@@ -5,6 +5,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Operation class has many common operation that will be needed by other child classes.
@@ -40,6 +41,19 @@ public class Operation {
 		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy/MM/dd");
         String dateFormat = DATE_FORMAT.format(date);
         return dateFormat;
+	}
+	
+	/**
+	 * @param date String date to convert to a Date object.
+	 * @return Date which can be queries by SQL.
+	 */
+	@SuppressWarnings("deprecation")
+	public Date stringToDateFormat(String date){
+		
+		
+		String[] split = date.split("-");
+		Date dateFormat = new Date(Integer.parseInt(split[0])-1900,Integer.parseInt(split[1])-1,Integer.parseInt(split[2]));
+		return dateFormat;
 	}
 	
 	/**

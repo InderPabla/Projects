@@ -1,26 +1,17 @@
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileReader;
-
 import javax.swing.JPanel;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
 import javax.swing.JLabel;
 
 /**
@@ -157,6 +148,19 @@ public class PharmacyAction extends Operation{
 		customerPanel.add(newCustButton);
 		
 		JButton updateCustButton = new JButton("<html>Update<br />Customer</html>");
+		updateCustButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							CustomerUpdate window = new CustomerUpdate(server,username,password);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});	
+			}
+		});
 		updateCustButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		updateCustButton.setForeground(new Color(255, 0, 0));
 		updateCustButton.setBounds(0, 53, 93, 42);
@@ -202,17 +206,28 @@ public class PharmacyAction extends Operation{
 		newEmpButton.setBounds(0, 0, 93, 42);
 		employeePanel.add(newEmpButton);
 		
-		JButton btnupdateemployee = new JButton("<html>Update<br />Employee</html>");
-		btnupdateemployee.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnupdateemployee.setForeground(new Color(0, 0, 255));
-		btnupdateemployee.setBounds(0, 53, 93, 42);
-		employeePanel.add(btnupdateemployee);
+		JButton updateEmpButton = new JButton("<html>Update<br />Employee</html>");
+		updateEmpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							EmployeeUpdate window = new EmployeeUpdate(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		updateEmpButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		updateEmpButton.setForeground(new Color(0, 0, 255));
+		updateEmpButton.setBounds(0, 53, 93, 42);
+		employeePanel.add(updateEmpButton);
 		
-		JButton button_2 = new JButton("<html>Search</html>");
-		button_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button_2.setForeground(new Color(0, 0, 255));
-		button_2.setBounds(0, 106, 93, 42);
-		employeePanel.add(button_2);
+		JButton searchEmpButton = new JButton("<html>Search</html>");
+		searchEmpButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		searchEmpButton.setForeground(new Color(0, 0, 255));
+		searchEmpButton.setBounds(0, 106, 93, 42);
+		employeePanel.add(searchEmpButton);
 		inventoryPanel.setBounds(216, 63, 93, 148);
 		frame.getContentPane().add(inventoryPanel);
 		inventoryPanel.setLayout(null);
@@ -234,10 +249,21 @@ public class PharmacyAction extends Operation{
 		newInvButton.setBounds(0, 0, 93, 42);
 		inventoryPanel.add(newInvButton);
 		
-		JButton btnupdateinventory = new JButton("<html>Update<br />Inventory</html>");
-		btnupdateinventory.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnupdateinventory.setBounds(0, 53, 93, 42);
-		inventoryPanel.add(btnupdateinventory);
+		JButton updateInvButton = new JButton("<html>Update<br />Inventory</html>");
+		updateInvButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							InventoryUpdate window = new InventoryUpdate(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		updateInvButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		updateInvButton.setBounds(0, 53, 93, 42);
+		inventoryPanel.add(updateInvButton);
 		
 		JButton button_5 = new JButton("<html>Search</html>");
 		button_5.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -265,11 +291,22 @@ public class PharmacyAction extends Operation{
 		newPharButton.setBounds(0, 0, 93, 42);
 		pharmacyPanel.add(newPharButton);
 		
-		JButton btnupdatepharmacy = new JButton("<html>Update<br />Pharmacy</html>");
-		btnupdatepharmacy.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnupdatepharmacy.setForeground(new Color(255, 153, 0));
-		btnupdatepharmacy.setBounds(0, 53, 93, 42);
-		pharmacyPanel.add(btnupdatepharmacy);
+		JButton updatePharButton = new JButton("<html>Update<br />Pharmacy</html>");
+		updatePharButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							PharmacyUpdate window = new PharmacyUpdate(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		updatePharButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		updatePharButton.setForeground(new Color(255, 153, 0));
+		updatePharButton.setBounds(0, 53, 93, 42);
+		pharmacyPanel.add(updatePharButton);
 		
 		JButton button_8 = new JButton("<html>Search</html>");
 		button_8.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -298,11 +335,22 @@ public class PharmacyAction extends Operation{
 		newSupButton.setBounds(0, 0, 93, 42);
 		supplierPanel.add(newSupButton);
 		
-		JButton btnupdatesupplier = new JButton("<html>Update<br />Supplier</html>");
-		btnupdatesupplier.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnupdatesupplier.setForeground(new Color(0, 128, 0));
-		btnupdatesupplier.setBounds(0, 53, 93, 42);
-		supplierPanel.add(btnupdatesupplier);
+		JButton updateSupButton = new JButton("<html>Update<br />Supplier</html>");
+		updateSupButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							SupplierUpdate window = new SupplierUpdate(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		updateSupButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		updateSupButton.setForeground(new Color(0, 128, 0));
+		updateSupButton.setBounds(0, 53, 93, 42);
+		supplierPanel.add(updateSupButton);
 		
 		JButton button_11 = new JButton("<html>Search</html>");
 		button_11.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -369,7 +417,7 @@ public class PharmacyAction extends Operation{
 	            }
 		    }
 		    resultSet.close();
-		} catch (SQLException e) {e.printStackTrace();}
+		} catch (Exception e) {e.printStackTrace();}
 		
 		if(!exists){
 			

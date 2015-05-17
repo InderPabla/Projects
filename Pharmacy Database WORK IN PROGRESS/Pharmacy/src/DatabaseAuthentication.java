@@ -116,22 +116,10 @@ public class DatabaseAuthentication extends Operation{
 				if(!(serverTextField.getText().equals("") || usernameTextField.getText().equals(""))){
 					try{			
 						createConnection(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText(),"");
-						
 						statusInfoLabel.setText("Connecting");
 						statusInfoLabel.setForeground(Color.green);
-						
-						EventQueue.invokeLater(new Runnable() {
-							public void run() {
-								try {
-									PharmacyAction windowPharmacy = new PharmacyAction(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText());
-									
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
-							}
-						});
+						PharmacyAction windowPharmacy = new PharmacyAction(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText());
 						frame.dispose();
-						
 					}
 					catch (Exception e){
 						statusInfoLabel.setText("Error In Connection");
