@@ -1,12 +1,23 @@
-####Finished
+###Finished
 #####   -Sample Populate.
 #####   -Self Query.
-#####   -New Customer Insert - New Pharmacy Insert - New Employee Insert - New Inventory Insert - New Supplier Insert.
-#####   -Update Customer - Update Pharmacy - Update Employee - Update Inventory - Update Supplier.
+#####   -New Customer Insert 
+#####   -New Pharmacy Insert 
+#####   -New Employee Insert 
+#####   -New Inventory Insert 
+#####   -New Supplier Insert.
+#####   -Update Customer 
+#####   -Update Pharmacy 
+#####   -Update Employee 
+#####   -Update Inventory 
+#####   -Update Supplier.
 #####   -Customer Search.
 
-####Not Finished
-#####   -Pharmacy Search - Employee Search - Inventory Search - Supplier Search.
+###Not Finished
+#####   -Pharmacy Search 
+#####   -Employee Search 
+#####   -Inventory Search 
+#####   -Supplier Search.
 
 
 #Pharmacy Database
