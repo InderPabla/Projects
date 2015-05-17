@@ -1,8 +1,12 @@
 ####Finished
-#####Sample populate, self query and all new inserts.
+#####   -Sample Populate.
+#####   -Self Query.
+#####   -New Customer Insert - New Pharmacy Insert - New Employee Insert - New Inventory Insert - New Supplier Insert.
+#####   -Update Customer - Update Pharmacy - Update Employee - Update Inventory - Update Supplier.
+#####   -Customer Search.
 
 ####Not Finished
-#####All updates and searchs.
+#####   -Pharmacy Search - Employee Search - Inventory Search - Supplier Search.
 
 
 #Pharmacy Database
