@@ -12,10 +12,10 @@
 ######   -Update Inventory 
 ######   -Update Supplier.
 ######   -Customer Search.
+######   -Employee Search 
 
 ###Not Finished
 ######   -Pharmacy Search 
-######   -Employee Search 
 ######   -Inventory Search 
 ######   -Supplier Search.
 
