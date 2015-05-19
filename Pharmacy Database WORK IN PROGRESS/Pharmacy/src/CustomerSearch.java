@@ -78,7 +78,7 @@ public class CustomerSearch extends Operation{
 		numPanelOut.setBounds(4, 35, 376, 67);
 		numPanelOut.setForeground(Color.RED);
 		numPanelOut.setBackground(Color.LIGHT_GRAY);
-		numPanelOut.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Customer Numer Search (CUST_NUM)", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		numPanelOut.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Customer Number Search (CUST_NUM)", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		searchCustPanel.add(numPanelOut);
 		numPanelOut.setLayout(null);
 		

@@ -31,6 +31,7 @@ import java.util.Date;
 public class EmployeeSearch extends Operation{
 
 	private JFrame frame;
+	
 	private JTextField indexField1;
 	private JTextField indexField2;
 	private JTextField nameField;
@@ -41,13 +42,18 @@ public class EmployeeSearch extends Operation{
 	private JTextField titleField;
 	private JTextField numberField1;
 	private JTextField numberField2;
+	
 	private JDateChooser dobField1 = new JDateChooser();
 	private JDateChooser dobField2 = new JDateChooser();
 	private JDateChooser hireDateField1 = new JDateChooser();
 	private JDateChooser hireDateField2 = new JDateChooser();
 	
 	/**
-	 * Create the application.
+	 * Windows Builder auto-parser constructor.
+	 * @param server Name of the server to connect to.
+	 * @param username Name of user.
+	 * @param password Password to the server.
+	 * @wbp.parser.constructor window builder parser
 	 */
 	public EmployeeSearch (String server, String username, String password) {
 		createConnection(server,username,password,pharmacyName);
@@ -616,20 +622,20 @@ public class EmployeeSearch extends Operation{
 	
 	/**
 	 * Query search to find employees given various constraints.
-	 * @param index1
-	 * @param index2
-	 * @param name
-	 * @param phone
-	 * @param dob1
-	 * @param dob2
-	 * @param address
-	 * @param hireDate1
-	 * @param hireDate2
-	 * @param wage1
-	 * @param wage2
-	 * @param title
-	 * @param number1
-	 * @param number2
+	 * @param index1 Lower index bound.
+	 * @param index2 Higher index bound.
+	 * @param name Substring to check.
+	 * @param phone Substring to check.
+	 * @param dob1 Lower date of birth bound.
+	 * @param dob2 Higher date of birth bound.
+	 * @param address Substring to check.
+	 * @param hireDate1 Lower hire date bound.
+	 * @param hireDate2 Higher hire date bound.
+	 * @param wage1 Lower wage bound.
+	 * @param wage2 Higher wage bound.
+	 * @param title Substring to check.
+	 * @param number1 Lower store number bound.
+	 * @param number2 Higher store number bound.
 	 * @param makeTable True or false if a table should be created upon query.
 	 */
 	public void searchByAll(int index1,int index2,

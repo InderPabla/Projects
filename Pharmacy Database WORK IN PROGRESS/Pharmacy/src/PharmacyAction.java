@@ -276,10 +276,21 @@ public class PharmacyAction extends Operation{
 		updateInvButton.setBounds(0, 53, 93, 42);
 		inventoryPanel.add(updateInvButton);
 		
-		JButton button_5 = new JButton("<html>Search</html>");
-		button_5.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button_5.setBounds(0, 106, 93, 42);
-		inventoryPanel.add(button_5);
+		JButton searchInvButton = new JButton("<html>Search</html>");
+		searchInvButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							InventorySearch window = new InventorySearch(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		searchInvButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		searchInvButton.setBounds(0, 106, 93, 42);
+		inventoryPanel.add(searchInvButton);
 		pharmacyPanel.setBounds(319, 63, 93, 148);
 		frame.getContentPane().add(pharmacyPanel);
 		pharmacyPanel.setLayout(null);
