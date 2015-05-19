@@ -224,6 +224,17 @@ public class PharmacyAction extends Operation{
 		employeePanel.add(updateEmpButton);
 		
 		JButton searchEmpButton = new JButton("<html>Search</html>");
+		searchEmpButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							EmployeeSearch window = new EmployeeSearch(server,username,password);
+						} catch (Exception e) {System.out.println("err");}
+					}
+				});
+			}
+		});
 		searchEmpButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		searchEmpButton.setForeground(new Color(0, 0, 255));
 		searchEmpButton.setBounds(0, 106, 93, 42);

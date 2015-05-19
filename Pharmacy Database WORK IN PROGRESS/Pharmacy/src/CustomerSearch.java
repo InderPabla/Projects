@@ -337,8 +337,8 @@ public class CustomerSearch extends Operation{
 			public void actionPerformed(ActionEvent event) {
 				int index1,index2;
 				 
-				if(isInteger(indexField1.getText()) || 
-				   isInteger(indexField2.getText()) ||
+				if(!isInteger(indexField1.getText()) || 
+				   !isInteger(indexField2.getText()) ||
 				   indexField1.getText().equals("") ||
 				   indexField2.getText().equals("")
 				){
@@ -456,7 +456,7 @@ public class CustomerSearch extends Operation{
 	 * @param makeTable True or false if a table should be created upon query.
 	 */
 	public void searchByAll(int index1,int index2,String name,String phone,String email,String address,String drug,Date date1,Date date2,boolean makeTable){
-		String query1 = "SELECT * FROM CUSTOMER";
+		String query = "SELECT * FROM CUSTOMER";
 		boolean isDateAvailable;
 		String date1Str="",date2Str="";
 		
@@ -470,26 +470,26 @@ public class CustomerSearch extends Operation{
 		}
 		
 		if(!(index1 == -1 || index2 == -1)){
-			query1 += " WHERE (CUST_NUM >="+index1+" && CUST_NUM<="+index2+")";
+			query += " WHERE (CUST_NUM >="+index1+" && CUST_NUM<="+index2+")";
 		}
 		
-		String query2 = "SELECT * FROM ("+query1+") AS A WHERE (CUST_NAME LIKE '%"+name+"%')";
-		String query3 = "SELECT * FROM ("+query2+") AS A WHERE (CUST_PHN_NUM LIKE '%"+phone+"%')";
-		String query4 = "SELECT * FROM ("+query3+") AS A WHERE (CUST_EMAIL LIKE '%"+email+"%')";
-		String query5 = "SELECT * FROM ("+query4+") AS A WHERE (CUST_ADRS LIKE '%"+address+"%')";
-		String query6 = "SELECT * FROM ("+query5+") AS A WHERE (CUST_APRVD_DRUG LIKE '%"+drug+"%')";
+		query = "SELECT * FROM ("+query+") AS A WHERE (CUST_NAME LIKE '%"+name+"%')";
+		query = "SELECT * FROM ("+query+") AS A WHERE (CUST_PHN_NUM LIKE '%"+phone+"%')";
+		query = "SELECT * FROM ("+query+") AS A WHERE (CUST_EMAIL LIKE '%"+email+"%')";
+		query = "SELECT * FROM ("+query+") AS A WHERE (CUST_ADRS LIKE '%"+address+"%')";
+		query = "SELECT * FROM ("+query+") AS A WHERE (CUST_APRVD_DRUG LIKE '%"+drug+"%')";
 		
 		if(isDateAvailable==true){
-			String query7 = "SELECT * FROM ("+query6+") AS A WHERE (CUST_DOB BETWEEN \""+date1Str+"\" AND \""+date2Str+"\")";
-			search(query7, makeTable);
+			query = "SELECT * FROM ("+query+") AS A WHERE (CUST_DOB BETWEEN \""+date1Str+"\" AND \""+date2Str+"\")";
+			search(query, makeTable);
 		}
 		else{
-			search(query6, makeTable);
+			search(query, makeTable);
 		}
 	}
 	
 	/**
-	 * Search Customer data base with the given query and get data. 
+	 * Search Customer data with the given query and get data. 
 	 * @param query Search with given query and get data.
 	 * @param makeTable If true a window will open to show a table with the customer number index and relevant information.
 	 */
