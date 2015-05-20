@@ -38,7 +38,7 @@ public class PharmacyAction extends Operation{
 	private int inventoryColumnSize = 7;
 	private int pharmacyColumnSize = 4;
 	private int supplierColumnSize = 4;
-	private int logColumnSize = 4;
+	//private int logColumnSize = 4;
 	
 	/**
 	 * Windows Builder auto-parser constructor.
@@ -136,7 +136,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							CustomerNew window = new CustomerNew(server,username,password);
+							new CustomerNew(server,username,password);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -153,7 +153,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							CustomerUpdate window = new CustomerUpdate(server,username,password);
+							new CustomerUpdate(server,username,password);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -174,7 +174,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							CustomerSearch window = new CustomerSearch(server,username,password);
+							new CustomerSearch(server,username,password);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -197,7 +197,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							EmployeeNew window = new EmployeeNew(server,username,password);
+							new EmployeeNew(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -212,7 +212,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							EmployeeUpdate window = new EmployeeUpdate(server,username,password);
+							new EmployeeUpdate(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -229,7 +229,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							EmployeeSearch window = new EmployeeSearch(server,username,password);
+							new EmployeeSearch(server,username,password);
 						} catch (Exception e) {System.out.println("err");}
 					}
 				});
@@ -251,7 +251,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							InventoryNew window = new InventoryNew(server,username,password);
+							new InventoryNew(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -266,7 +266,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							InventoryUpdate window = new InventoryUpdate(server,username,password);
+							new InventoryUpdate(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -282,7 +282,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							InventorySearch window = new InventorySearch(server,username,password);
+							new InventorySearch(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -304,7 +304,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							PharmacyNew window = new PharmacyNew(server,username,password);
+							new PharmacyNew(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -319,7 +319,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							PharmacyUpdate window = new PharmacyUpdate(server,username,password);
+							new PharmacyUpdate(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -330,11 +330,22 @@ public class PharmacyAction extends Operation{
 		updatePharButton.setBounds(0, 53, 93, 42);
 		pharmacyPanel.add(updatePharButton);
 		
-		JButton button_8 = new JButton("<html>Search</html>");
-		button_8.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button_8.setForeground(new Color(255, 153, 0));
-		button_8.setBounds(0, 106, 93, 42);
-		pharmacyPanel.add(button_8);
+		JButton searchPharButton = new JButton("<html>Search</html>");
+		searchPharButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							new PharmacySearch(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		searchPharButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		searchPharButton.setForeground(new Color(255, 153, 0));
+		searchPharButton.setBounds(0, 106, 93, 42);
+		pharmacyPanel.add(searchPharButton);
 		supplierPanel.setBounds(420, 63, 93, 148);
 		frame.getContentPane().add(supplierPanel);
 		supplierPanel.setLayout(null);
@@ -348,7 +359,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							SupplierNew window = new SupplierNew(server,username,password);
+							new SupplierNew(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -363,7 +374,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							SupplierUpdate window = new SupplierUpdate(server,username,password);
+							new SupplierUpdate(server,username,password);
 						} catch (Exception e) {}
 					}
 				});
@@ -374,11 +385,22 @@ public class PharmacyAction extends Operation{
 		updateSupButton.setBounds(0, 53, 93, 42);
 		supplierPanel.add(updateSupButton);
 		
-		JButton button_11 = new JButton("<html>Search</html>");
-		button_11.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		button_11.setForeground(new Color(0, 128, 0));
-		button_11.setBounds(0, 106, 93, 42);
-		supplierPanel.add(button_11);
+		JButton searchSupButton = new JButton("<html>Search</html>");
+		searchSupButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							new SupplierSearch(server,username,password);
+						} catch (Exception e) {}
+					}
+				});
+			}
+		});
+		searchSupButton.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		searchSupButton.setForeground(new Color(0, 128, 0));
+		searchSupButton.setBounds(0, 106, 93, 42);
+		supplierPanel.add(searchSupButton);
 		databaseLabel.setBounds(10, 247, 103, 14);
 		frame.getContentPane().add(databaseLabel);
 		databaseStatusLabel.setBounds(114, 247, 155, 14);
@@ -393,7 +415,7 @@ public class PharmacyAction extends Operation{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							SelfQuery window = new SelfQuery(server,username,password);
+							new SelfQuery(server,username,password);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

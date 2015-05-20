@@ -118,7 +118,7 @@ public class DatabaseAuthentication extends Operation{
 						createConnection(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText(),"");
 						statusInfoLabel.setText("Connecting");
 						statusInfoLabel.setForeground(Color.green);
-						PharmacyAction windowPharmacy = new PharmacyAction(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText());
+						new PharmacyAction(serverTextField.getText(),usernameTextField.getText(),passwordTextField.getText());
 						frame.dispose();
 					}
 					catch (Exception e){

@@ -5,7 +5,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  * Operation class has many common operation that will be needed by other child classes.
@@ -74,7 +73,7 @@ public class Operation {
 	 * @param str String to check if it's a float.
 	 * @return If error during parse then false, else true
 	 */
-	boolean isFloat(String str) {
+	public boolean isFloat(String str) {
         try {
             Float.parseFloat(str);
             return true;
@@ -87,7 +86,7 @@ public class Operation {
 	 * @param str String to check if it's an integer.
 	 * @return If error during parse then false, else true
 	 */
-	boolean isInteger(String str) {
+	public boolean isInteger(String str) {
         try {
             Integer.parseInt(str);
             return true;

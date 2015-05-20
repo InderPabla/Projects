@@ -469,7 +469,7 @@ public class EmployeeSearch extends Operation{
 				}
 				else{
 					index1 = Integer.parseInt(indexField1.getText());
-					index2 = Integer.parseInt(indexField1.getText());
+					index2 = Integer.parseInt(indexField2.getText());
 				}
 				
 				if(!isFloat(hireWageField1.getText()) || 
@@ -482,7 +482,7 @@ public class EmployeeSearch extends Operation{
 				}
 				else{
 					wage1 = Float.parseFloat(hireWageField1.getText());
-					wage2 = Float.parseFloat(hireWageField1.getText());
+					wage2 = Float.parseFloat(hireWageField2.getText());
 				}
 				
 				if(!isInteger(numberField1.getText()) || 
@@ -495,7 +495,7 @@ public class EmployeeSearch extends Operation{
 				}
 				else{
 					number1 = Integer.parseInt(numberField1.getText());
-					number2 = Integer.parseInt(numberField1.getText());
+					number2 = Integer.parseInt(numberField2.getText());
 				}
 				
 				searchByAll(index1,

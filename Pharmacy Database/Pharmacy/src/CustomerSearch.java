@@ -347,7 +347,7 @@ public class CustomerSearch extends Operation{
 				}
 				else{
 					index1 = Integer.parseInt(indexField1.getText());
-					index2 = Integer.parseInt(indexField1.getText());
+					index2 = Integer.parseInt(indexField2.getText());
 				}
 				
 				searchByAll(index1,
