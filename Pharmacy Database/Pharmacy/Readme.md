@@ -15,6 +15,7 @@
 ######   -Pharmacy Search. 
 ######   -Inventory Search. 
 ######   -Supplier Search.
+######   -Log Search.
 
 #Pharmacy Database
 
