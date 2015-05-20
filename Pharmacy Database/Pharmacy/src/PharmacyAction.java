@@ -440,6 +440,23 @@ public class PharmacyAction extends Operation{
 		});
 		sampleButton.setBounds(193, 238, 155, 23);
 		frame.getContentPane().add(sampleButton);
+		
+		JButton searchLogButton = new JButton("Log Search");
+		searchLogButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							new LogSearch(server,username,password);
+						} catch (Exception error) {}
+					}
+				});
+			}
+		});
+		searchLogButton.setFont(new Font("Tahoma", Font.BOLD, 11));
+		searchLogButton.setForeground(new Color(255, 51, 255));
+		searchLogButton.setBounds(10, 222, 103, 23);
+		frame.getContentPane().add(searchLogButton);
 		frame.setVisible(true);
 		
 		pharmacyDatabaseCheck();
