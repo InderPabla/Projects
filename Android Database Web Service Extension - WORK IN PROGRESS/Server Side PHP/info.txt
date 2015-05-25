@@ -1,0 +1,6 @@
+http://192.168.0.14:80/a/authenticate.php?server=localhost&username=root&password=pass1
+http://192.168.0.14:80/a/database.php?server=localhost&username=root&password=pass1
+http://192.168.0.14:80/a/databaseTable.php?server=localhost&username=root&password=pass1&database=pharmacy
+http://192.168.0.14/a/tableColumn.php?server=localhost&username=root&password=pass1&database=pharmacy&table=customer
+http://192.168.0.14/a/tableColumn.php?server=localhost&username=root&password=pass1&database=pharmacy&table=customer
+http://192.168.0.14/a/tableColumn.php?server=localhost&username=root&password=pass1&database=pharmacy&table=customer
