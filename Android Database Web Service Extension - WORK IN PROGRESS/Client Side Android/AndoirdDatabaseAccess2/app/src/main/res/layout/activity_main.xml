@@ -1,0 +1,176 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="left|top"
+        android:background="#010101"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Database Authentication"
+            android:id="@+id/textView"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#ff84ff00"
+            android:layout_centerHorizontal="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/webField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web-Service Site"
+            android:id="@+id/textView2"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:textColor="#00e4ff"
+            android:textSize="17dp"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView7"
+            android:layout_alignStart="@+id/textView7" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Port Number"
+            android:id="@+id/textView3"
+            android:textStyle="bold"
+            android:textColor="#00e4ff"
+            android:textSize="17dp"
+            android:layout_below="@+id/webField"
+            android:layout_alignLeft="@+id/webField" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/portField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_below="@+id/textView3"
+            android:layout_alignLeft="@+id/webField"
+            android:layout_alignRight="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:id="@+id/textView4"
+            android:textStyle="bold"
+            android:textColor="#ffce00"
+            android:textSize="17dp"
+            android:layout_above="@+id/nameField"
+            android:layout_alignLeft="@+id/portField" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/nameField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_above="@+id/textView5"
+            android:layout_alignLeft="@+id/textView4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:id="@+id/textView5"
+            android:textStyle="bold"
+            android:textColor="#43ff00"
+            android:textSize="17dp"
+            android:layout_above="@+id/passField"
+            android:layout_alignRight="@+id/textView4" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/passField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_marginBottom="45dp"
+            android:layout_above="@+id/connectButton"
+            android:layout_alignLeft="@+id/nameField" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Connect"
+            android:id="@+id/connectButton"
+            android:background="#a9ff00"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:onClick="authenticate"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='Folders To "authenticate.php"'
+            android:id="@+id/textView6"
+            android:textStyle="bold"
+            android:textColor="#00e4ff"
+            android:textSize="17dp"
+            android:layout_below="@+id/portField"
+            android:layout_alignLeft="@+id/portField" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/folderField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_below="@+id/textView6"
+            android:layout_alignLeft="@+id/portField" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Server Name"
+            android:id="@+id/textView7"
+            android:textStyle="bold"
+            android:textColor="#ff00d2"
+            android:textSize="17dp"
+            android:layout_above="@+id/serverField"
+            android:layout_alignLeft="@+id/textView5" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/serverField"
+            android:textColor="#000101"
+            android:background="#ffffff"
+            android:layout_above="@+id/textView4"
+            android:layout_alignLeft="@+id/textView4" />
+
+    </RelativeLayout>
+
+</FrameLayout>
