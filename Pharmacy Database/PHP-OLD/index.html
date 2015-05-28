@@ -1,0 +1,37 @@
+<html>
+	
+	<form action = "databaseAuthentication.php" method = "GET">
+		<input type="hidden" name="total" id="total" value="Submit">
+		<h3>Server Name:</h3>
+		<input type = "text" name = "server_name" id = "server_name">
+		
+		<h3>Username:</h3>
+		<input type = "text" name = "username" id = "username">
+		
+		<h3>Password:</h3>
+		<input type = "password" name = "password" id = "password">
+		
+		<br><br>
+		<button type = "button" class="button" onclick="send()">Enter</button>
+	</form>
+	
+	<script type = "text/javascript">
+		var total = document.getElementById("total");
+		var server_name = document.getElementById("server_name");
+		var username = document.getElementById("username");
+		var password = document.getElementById("password");
+		
+		function send(){
+			if(server_name!="" && username!="" && password!=""){
+				total.form.submit();
+			}
+		}
+	</script>
+	
+	<style>
+		h3
+		{
+			margin-bottom:0px;
+		}
+	</style>
+</html>

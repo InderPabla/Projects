@@ -1,0 +1,205 @@
+P2P Photo Album Pseudo Code
+NOTE: The P2P client and P2P server are ONE program (executable) so they are treated as such in the Pseudo code.
+
+Directory Server: 
+
+//Start the server and create the necessary TCP connections.
+-----start_server-----
+
+Spawn thread to listen for the DHT servers to connect
+Get user input to determine whether this is server #1
+IF server 1
+	Stop thread that is listening for the DHT servers to connect
+	WHILE four servers are not connected together
+		Enter IP Addresses of the 3 other servers
+		Establish TCP connection to each
+			Retry if timeout, continue Loop if new IP address needed 
+		CASE which server is connecting
+			First server to connect: 
+				Establish TCP connection between server 2 and server 1.
+			Second server to connect: 
+				Establish TCP connection between server 2 and server 3
+			Third server to connect:
+				Establish TCP connection between server 3 and server 4
+				Establish TCP connection between server 4 and server 1
+		ENDCASE
+	ENDWHILE
+	Close ALL original TCP connection
+ENDIF
+
+
+//Thread that listens for server #1 to connect to it to establish the necessary connections.
+-----listenForServers-----
+
+Listen for TCP connection from other servers.
+IF connection established
+	Wait for assignment of relevant TCP connections
+	Assign TCP connections
+	Close original TCP connection with server #1
+ENDIF
+
+
+
+//Thread that runs continuously and checks for new users
+-----init-----
+
+IF server #1 and has not resolved all the DHT server IPS
+	Wait on UDP connection for clients to connect
+	Connect to client and confirm connection
+	Request next server in the DHT ring for their IPs
+ELSEIF Server #1 and resolved all the DHT server IPs
+	Send all of the IP addresses to the requesting client
+ELSE
+	Wait on TCP connection for other DHT servers to request their IP Address
+	Append the IP address of current DHT server to list
+	Send request to next server in the DHT ring along with list of appended DHT server IPs.
+ENDIF
+	
+
+//Update the server record if client requests it
+-----update-----
+
+IF server #1
+	Listen to the UDP connection for and update request from client
+	Get the hashed content name, the content name, and the Client’s IP address from client
+	IF hash equals server 1
+		Store the content name and Client’s IP address 
+		Send confirmation message to client.
+	ELSE
+		Send update request to server 2 along with the hashed content name, the content name, and the Client’s IP address.
+	ENDIF
+ELSEIF hash value does NOT equal to the current DHT server
+	Send update request next DHT server along with the hashed content name, the content name, and the Client’s IP address.
+ELSEIF hash value equals the current DHT server
+	Store the content name and Client’s IP address 
+	Send confirmation message to next DHT along with clients IP address.
+ENDIF
+
+//handles confirmation messages and sends them back to the client
+-----confirmation-----
+
+IF server #1
+	Send confirmation message to the client that serviced the request.
+ELSE
+	Send the confirmation message to next DHT server.
+ENDIF
+
+
+//get content from server to resolve the P2P server’s IP address
+-----content_query-----
+
+IF Server #1 and received a query request form server #4
+	Send requesting client error code “404 content not found”
+ELSEIF Server #1
+	Listen to the UDP connection for and query request from client
+	Get the hashed content name and content name.
+	IF hash equals server 1
+		Search records for content name
+		Get associated IP address of the P2P server
+		Send IP address of P2P server to requesting client
+		Confirm that it has been sent
+	ELSE
+		Send request to server 2 along with the hashed content name, the content name.
+	ENDIF
+ELSEIF hash value does NOT equal to the current DHT server
+	Send update request next DHT server along with the hashed content name and content name.
+ELSEIF hash value equals the current DHT server
+	Search records for content name
+	Get associated IP address of the P2P server
+	Send confirmation message with IP address of P2P server to next DHT server
+ENDIF
+
+//remove all content records and remove all UDP connections.
+-----exit-----
+
+IF Server #1 and get an exit request from previous DHT server
+	Send confirmation message to client. 
+ELSEIF Server #1
+	Listen to the UDP connect for exit request
+	Get client’s IP address
+	Remove all corresponding records that are associated with this IP address
+	Send exit request to next DHT server
+ELSE get exit request from previous DHT server 
+	Remove all records corresponding to the IP address of the P2P client
+	Send exit request to next server in the DHT
+ENDIF
+
+
+P2P Client and P2P Server:
+
+//Establish initial connection to distributed servers using server #1
+-----init-----
+
+Connect to UDP connection of distributed server #1
+Connect and confirm
+Wait to receive the IP address of the other three servers
+Store the 3 DHT server IP addresses
+
+//inform the associated DHT server about new content
+-----inform-----
+
+Hash the content name of the content the Client wishes to store
+Connect to UDP connection of distributed server #1
+Connect and confirm
+Send the hashed value, content name and the current Client’s IP address
+Wait for confirmation message from server.
+Store local record with content name, DHT server and the P2P server’s IP address.
+
+//inform the associated DHT server about new content
+-----query-----
+
+Hash the content’s name into DHT server ID
+Connect to UDP connection of distributed server #1
+Connect and confirm
+Send the hashed value, content name
+Wait for confirmation message
+IF the content was found
+	Store the P2P server IP Address.
+ELSEIF
+	Return Error message to user.
+ENDIF
+
+//exit and remove all content stored on servers 
+-----exit-----
+
+Connect to UDP connection of distributed server #1
+Connect and confirm
+Send exit request to server #1
+Wait for confirmation message.
+
+
+//get file from a P2P server
+-----file_request-----
+
+IF client has IP address of the P2P server where the Image is stored
+	Establish TCP connection with other P2P server
+	Wait for the corresponding server to send new ports and create a new TCP connection
+	Create new TCP connection to service the file transfer
+	Close original connection
+	Request file from server
+	Wait until file has been transferred
+	Close TCP connection
+ELSE
+	Do nothing
+ENDIF
+
+//Establish base TCP connection to allow Multithread TCP connections 
+-----file_transfer-----
+
+Listen on a TCP connection
+IF other client connects to this P2P server.
+	Create thread to handle file transferring: image _transfer.
+ENDIF
+
+
+//Thread that transfers the image to the requesting P2P client
+-----image_transfer-----
+
+Create a new TCP connection to P2P Client
+Close original TCP connection
+WHILE there is a request for an Image 
+	Transfer the JPEG file
+	IF timeout or exit message received
+		End thread and send message to recipient P2P client
+	ENDIF
+ENDWHILE
