@@ -16,7 +16,7 @@
 ###After a table is picked, operations that can be performed are loaded.
 #####Operations are Check Columns, Insert, Search, Update and Delete
 #####Update and Delete not implemented yet.
-![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/3.PNG "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/3.png "Optional Title")
 #####User can click any operation to perform on the table.
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
