@@ -19,4 +19,17 @@
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/3.png "Optional Title")
 #####User can click any operation to perform on the table.
 #-----------------------------------------------------------------------
-
+#-----------------------------------------------------------------------
+###Example: Log table -> Check Column
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/4.png "Optional Title")
+#####Column information of log table is loaded. User can click back button at any moment to go back.
+#-----------------------------------------------------------------------
+###Example: Employee table -> Check Column
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/5.png "Optional Title")
+#####Column information of employee table is loaded. User can click back button at any moment to go back.
+#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------
+###Example: Customer table -> Search
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/6.png "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/7.png "Optional Title")
+#####Data can be searched for any table.
