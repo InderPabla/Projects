@@ -16,7 +16,7 @@
 ###After a table is picked, operations that can be performed are loaded.
 #####Operations are Check Columns, Insert, Search, Update and Delete
 #####Update and Delete not implemented yet.
-![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/10.PNG "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/3.PNG "Optional Title")
 #####User can click any operation to perform on the table.
 #-----------------------------------------------------------------------
 #-----------------------------------------------------------------------
@@ -41,4 +41,4 @@
 #It seems 5 is the highest. So the next key user can use is 6.
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/9.png "Optional Title")
 #Then the user can insert the data into the database.
-![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/10.png "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/10.PNG "Optional Title")
