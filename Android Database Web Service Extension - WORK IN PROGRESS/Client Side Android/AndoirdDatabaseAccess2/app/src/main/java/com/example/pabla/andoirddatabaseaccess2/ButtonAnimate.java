@@ -26,6 +26,7 @@ public class ButtonAnimate extends Activity
     {
         this.view = view;
         old = ((Button)this.view).getBackground();
+
         color = new ColorDrawable(colorToChange);
         button = (Button)view;
         this.interval = interval;

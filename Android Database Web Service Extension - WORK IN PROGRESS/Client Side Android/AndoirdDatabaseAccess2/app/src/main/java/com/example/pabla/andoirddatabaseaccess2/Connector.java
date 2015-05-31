@@ -19,7 +19,7 @@ public class Connector
     public Connector(String link)
     {
         connectorLink = link;
-        response = connect();
+        //response = connect();
     }
 
     /**
