@@ -8,20 +8,29 @@ import android.view.View;
 import android.widget.Button;
 
 /**
- * Created by PABLA on 27/05/2015.
+ * ButtonAnimate handel's simple button animation.
+ * @author INDERPREET PABLA
  */
 public class ButtonAnimate extends Activity
 {
-    View view;
-    Button button;
-    Thread thread;
+    private View view;
+    private Button button;
+    private Thread thread;
 
-    boolean running = false;
+    private boolean running = false;
 
-    Drawable old;
-    ColorDrawable color;
+    private Drawable old;
+    private ColorDrawable color;
 
-    float interval;
+    private float interval;
+
+    /**
+     * Constructor to set view, color and interval time with given parameters.
+     * @param view View of the button to animate.
+     * @param colorToChange Simple color to change the color of the button to.
+     * @param interval The time it takes to change the color from initial color of the button to the
+     *                 given colorToChange
+     */
     public ButtonAnimate(View view, int colorToChange, float interval)
     {
         this.view = view;
@@ -32,6 +41,15 @@ public class ButtonAnimate extends Activity
         this.interval = interval;
     }
 
+    /**
+     * If thread is not running the button begins animation by creating a new thread. The thread
+     * process follows the following stages.
+     * 1. Thread Start.
+     * 2. Change color to different color using runOnUiThread.
+     * 3. Change color back to initial color using runOnUiThread.
+     * 4. Stop Thread.
+     * Both stages 2 and 3 take the same amount of time which is equal to the interval in milliseconds.
+     */
     public void animate()
     {
         if(running==false)

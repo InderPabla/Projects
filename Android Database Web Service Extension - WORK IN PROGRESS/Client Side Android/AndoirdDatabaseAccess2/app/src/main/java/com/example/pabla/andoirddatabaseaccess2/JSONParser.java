@@ -1,14 +1,13 @@
 package com.example.pabla.andoirddatabaseaccess2;
 
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 /**
- * Created by PABLA on 27/05/2015.
+ * JSONParser class parses JSON data given by a string into its appropriate states.
+ * @author INDERPREET PABLA
  */
 public class JSONParser
 {
@@ -32,9 +31,15 @@ public class JSONParser
     ArrayList<String> data2 = new ArrayList<String>();
     ArrayList<String> combined = new ArrayList<String>();
 
+    /**
+     * Constructor parsers the JSON string given with the given tag. There are 4 ways data can be
+     * parsed. With DATABASE_PARSE_TAG, TABLE_PARSE_TAG, COLUMN_PARSE_TAG or DATA_PARSE_TAG.
+     * @param JSONString The JSON string to be parsed.
+     * @param tag String will be parsed according to the given tag.
+     */
     public JSONParser(String JSONString, int tag)
     {
-
+        //Parse database names information from the JSON string and put them into data1.
         if(tag == DATABASE_PARSE_TAG)
         {
             try
@@ -51,6 +56,7 @@ public class JSONParser
             }
         }
 
+        //Parse table names information from the JSON string and put them into data1.
         if(tag == TABLE_PARSE_TAG)
         {
             try
@@ -67,6 +73,10 @@ public class JSONParser
             }
         }
 
+        /**
+         * Parse column information from the JSON string and put column names into data1, column
+         * types into data2, and column names and types concatenated information into combined.
+         */
         if(tag == COLUMN_PARSE_TAG)
         {
             try
@@ -91,6 +101,7 @@ public class JSONParser
             }
         }
 
+        //Parse data that was just searched into data1.
         if(tag == DATA_PARSE_TAG)
         {
             try
@@ -109,14 +120,6 @@ public class JSONParser
 
                     }
                 }
-
-                /*Log.i("MyActivity","Starting");
-                for(int i = 0;i< data1.size();i++)
-                {
-                    Log.i("MyActivity",data1.get(i)+"");
-                }*/
-
-
             } catch(Exception error)
             {
                 error.getMessage();

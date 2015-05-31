@@ -8,22 +8,31 @@ import org.apache.http.HttpEntity;
 import org.apache.http.util.EntityUtils;
 
 /**
- * Created by PABLA on 27/05/2015.
+ * Connector class can execute a link and get data echoed by the server.
+ * @author INDERPREET PABLA
  */
 public class Connector
 {
 
-    String connectorLink;
-    String response = "";
+    private String connectorLink;
+    private String response = "";
 
+    /**
+     * Constructor initializes given link to connectorLink.
+     * @param link The link to execute.
+     */
     public Connector(String link)
     {
         connectorLink = link;
-        //response = connect();
+        //response = connect(); //commented out because the user should have the choice when to
+                                //connect and when not to connect.
     }
 
+
     /**
+     * Connects to the link and gets response returned by server.
      * @deprecated Connectivity components DefaultHttpClient and HttpEntity are deprecated.
+     * @return Returns the text that was returned by the php files after their executions.
      */
     public String connect()
     {
@@ -43,5 +52,14 @@ public class Connector
             return error.getMessage();
         }
 
+    }
+
+    /**
+     * Returns the response string.
+     * @return Returns the text that was returned by the php files after their executions.
+     */
+    public String getResponse()
+    {
+        return response;
     }
 }

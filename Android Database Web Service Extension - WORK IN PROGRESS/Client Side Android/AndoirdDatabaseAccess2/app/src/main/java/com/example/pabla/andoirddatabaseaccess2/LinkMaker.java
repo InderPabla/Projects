@@ -1,10 +1,22 @@
 package com.example.pabla.andoirddatabaseaccess2;
 
 /**
- * Created by PABLA on 27/05/2015.
+ * LinkMaker class handles all link creation for various activities.
+ * @author INDERPREET PABLA
  */
 public class LinkMaker
 {
+    //Link skeletons to be filled in.
+    private final String authenticateLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/authenticate.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]";
+    private final String databaseRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/database_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]";
+    private final String tableRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/table_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]";
+    private final String columnRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/column_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]";
+    private final String insertLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/insert.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]&length=[DATA-LENGTH-MARKER][DATA-MARKER]";
+    private final String searchLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/search.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]&length=[DATA-LENGTH-MARKER][DATA-MARKER]&bound1=[BOUND-LOWER-MARKER]&bound2=[BOUND-HIGHER-MARKER]";
+    private final String updateLink = ""; //Not done
+    private final String deleteLink = ""; //Not done
+
+    //Tags which identify parts of the links are tagged markers.
     private final String WEB_TAG = "[WEB-MARKER]";
     private final String PORT_TAG = "[PORT-MARKER]";
     private final String FOLDER_TAG = "[FOLDER-MARKER]";
@@ -18,37 +30,60 @@ public class LinkMaker
     private final String BOUND_LOWER_TAG = "[BOUND-LOWER-MARKER]";
     private final String BOUND_HIGHER_TAG = "[BOUND-HIGHER-MARKER]";
 
-    private String authenticateLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/authenticate.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]";
-    private String databaseRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/database_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]";
-    private String tableRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/table_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]";
-    private String columnRetrieveLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/column_retrieve.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]";
-    private String insertLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/insert.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]&length=[DATA-LENGTH-MARKER][DATA-MARKER]";
-    private String searchLink = "http://[WEB-MARKER][PORT-MARKER]/[FOLDER-MARKER]/search.php?server=[SERVER-MARKER]&username=[USERNAME-MARKER]&password=[PASSWORD-MARKER]&database=[DATABASE-MARKER]&table=[TABLE-MARKER]&length=[DATA-LENGTH-MARKER][DATA-MARKER]&bound1=[BOUND-LOWER-MARKER]&bound2=[BOUND-HIGHER-MARKER]";
-
+    //Typical information filled with constructor calls.
     private String web;
     private int port;
     private String folder;
     private String server;
     private String username;
     private String password;
-
     private String database;
     private String table;
+    private String[] data;
 
-    public String link;
+    String link; //link which is created to be used
 
-    String[] data;
+    /**
+     * Constructor saves 6 pieces of data. Used for authenticate.php and database_retrieve.php.
+     * @param web The name of the website.
+     * @param port The port number of the website to access.
+     * @param folder The folders to where the webservice has the php files.
+     * @param server Name of the server.
+     * @param username Name of the user's account on the server.
+     * @param password Password of the user on the account.
+     */
     public LinkMaker(String web, String port, String folder,String server, String username, String password)
     {
         normalInstantiation(web,port,folder,server,username,password);
     }
 
+    /**
+     * Constructor saves 7 pieces of data. Used for table_retrieve.php.
+     * @param web The name of the website.
+     * @param port The port number of the website to access.
+     * @param folder The folders to where the webservice has the php files.
+     * @param server Name of the server.
+     * @param username Name of the user's account on the server.
+     * @param password Password of the user on the account.
+     * @param database Name of the database
+     */
     public LinkMaker(String web, String port, String folder,String server, String username, String password, String database)
     {
         normalInstantiation(web,port,folder,server,username,password);
         this.database = database;
     }
 
+    /**
+     * Constructor saves 8 pieces of data. Used for column_retrieve.php.
+     * @param web The name of the website.
+     * @param port The port number of the website to access.
+     * @param folder The folders to where the webservice has the php files.
+     * @param server Name of the server.
+     * @param username Name of the user's account on the server.
+     * @param password Password of the user on the account.
+     * @param database Name of the database
+     * @param table Name of the table.
+     */
     public LinkMaker(String web, String port, String folder,String server, String username, String password, String database, String table)
     {
         normalInstantiation(web,port,folder,server,username,password);
@@ -56,6 +91,18 @@ public class LinkMaker
         this.table = table;
     }
 
+    /**
+     * Constructor saves 9 pieces of data. Used for insert.php, search.php, update.php and delete.php
+     * @param web The name of the website.
+     * @param port The port number of the website to access.
+     * @param folder The folders to where the webservice has the php files.
+     * @param server Name of the server.
+     * @param username Name of the user's account on the server.
+     * @param password Password of the user on the account.
+     * @param database Name of the database
+     * @param table Name of the table.
+     * @param data The data which need to be queried.
+     */
     public LinkMaker(String web, String port, String folder,String server, String username, String password, String database, String table, String[] data)
     {
         normalInstantiation(web,port,folder,server,username,password);
@@ -69,6 +116,15 @@ public class LinkMaker
         }
     }
 
+    /**
+     * Saves the data into global variables.
+     * @param web The name of the website.
+     * @param port The port number of the website to access.
+     * @param folder The folders to where the webservice has the php files.
+     * @param server Name of the server.
+     * @param username Name of the user's account on the server.
+     * @param password Password of the user on the account.
+     */
     public void normalInstantiation(String web, String port, String folder,String server, String username, String password)
     {
         this.web = web;
@@ -88,6 +144,10 @@ public class LinkMaker
         this.password = password;
     }
 
+    /**
+     * Makes authenticate link.
+     * @return The link string which was created.
+     */
     public String makeAuthenticateLink()
     {
         String link = authenticateLink;
@@ -96,6 +156,10 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Makes database retrieve link.
+     * @return The link string which was created.
+     */
     public String makeDatabaseRetrieveLink()
     {
         String link = databaseRetrieveLink;
@@ -104,6 +168,10 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Makes table retrieve link.
+     * @return The link string which was created.
+     */
     public String makeTableRetrieveLink()
     {
         String link = tableRetrieveLink;
@@ -113,6 +181,10 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Makes column retrieve link.
+     * @return The link string which was created.
+     */
     public String makeColumnRetrieveLink()
     {
         String link = columnRetrieveLink;
@@ -123,6 +195,10 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Makes insert link.
+     * @return The link string which was created.
+     */
     public String makeInsertLink()
     {
         String link = insertLink;
@@ -142,6 +218,12 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Makes search link.
+     * @param lowerBound The lower bound to replace BOUND_LOWER_TAG
+     * @param higherBound The higher bound to replace BOUND_HIGHER_TAG
+     * @return The link string which was created.
+     */
     public String makeSearchLink(int lowerBound, int higherBound)
     {
         String link = searchLink;
@@ -164,6 +246,10 @@ public class LinkMaker
         return link;
     }
 
+    /**
+     * Replaces the first 6 data sets to there appropriate global variables.
+     * @return The link string which was normalized.
+     */
     private String normalReplace(String link)
     {
         String tempLink = link;
@@ -185,6 +271,11 @@ public class LinkMaker
         return tempLink;
     }
 
+    /**
+     * Check if string is an integer.
+     * @param check String to check if it's an integer.
+     * @return If error during parse then false, else true
+     */
     public boolean isInteger(String check)
     {
         try
