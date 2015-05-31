@@ -6,4 +6,9 @@
 #User can type in their information and connect to their database. 
 
 ###After authentication is passed, databases available are extracted
-![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/1.png "Optional Title")
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/2.png "Optional Title")
+#User can click any database and move to next phase.
+
+###After a database is picked, tables inside the database are loaded.
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/3.png "Optional Title")
+#User can click any table and move to next phase.
