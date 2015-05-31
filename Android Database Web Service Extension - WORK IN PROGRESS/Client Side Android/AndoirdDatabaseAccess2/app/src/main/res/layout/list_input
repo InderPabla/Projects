@@ -1,0 +1,48 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore=".MainActivity$PlaceholderFragmente" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="left|top"
+        android:background="#010101"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Database Names"
+            android:id="@+id/listName_input"
+            android:textColor="#ff000b"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_input"
+            android:background="#ffff4757"
+            android:layout_below="@+id/listName_input"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@+id/operationButton" />
+
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:text="Operation"
+            android:id="@+id/operationButton"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#ff6fff00"
+            android:onClick="operationAction" />
+    </RelativeLayout>
+
+</FrameLayout>
