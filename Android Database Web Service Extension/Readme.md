@@ -32,4 +32,13 @@
 ###Example: Customer table -> Search
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/6.png "Optional Title")
 ![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/7.png "Optional Title")
-#####Data can be searched for any table.
+#####Data can be searched for any table. User can press Next or Previous button to load more or less data.
+#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------
+###User can also insert information into the database.
+#In this case the user first needs to know the max size of Primary Key.
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/8.png "Optional Title")
+#It seems 5 is the highest. So the next key user can use is 6.
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/9.png "Optional Title")
+#Then the user can insert the data into the database.
+![Alt text](https://github.com/InderPabla/Projects/blob/master/Android%20Database%20Web%20Service%20Extension/Images/10.png "Optional Title")
