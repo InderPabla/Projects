@@ -13,6 +13,9 @@ public class CannonAmmoPhysics
 	/// <summary>
 	/// CannonAmmoPhysics constructor with angle, velocity, and position
 	/// </summary>
+	/// <param name = 'angleRad'> Angle at which velocity is applied </param>
+	/// <param name = 'velocity'> 2D velocity vector </param>
+	/// <param name = 'positionOfAction'> position from where the action will originate </param>
 	public CannonAmmoPhysics(float angleRad, Vector2 velocity, Vector3 positionOfAction)
 	{
 		this.angleRad = angleRad;
