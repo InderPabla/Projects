@@ -27,7 +27,7 @@ public class CannonTouch : MonoBehaviour
 	private float angleRad = 0f;
 	private float touchLockToggleWaitTime = 2f;
 	private Vector2 velocity = Vector2.zero;
-	private Vector3 touchPosition = Vector3.zero;
+	private Vector3 cameraTouchPosition = Vector3.zero;
 
 	public Transform cannonAmmo = null;
 	public GameObject cannonFire = null;
@@ -54,9 +54,10 @@ public class CannonTouch : MonoBehaviour
 
 		if(touchCamera == true)
 		{
+			//Debug.Log(touchPosition.x);
 			Vector3 touchPosition2 = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 			Vector3 newCameraPosition = Vector3.zero;
-			newCameraPosition.x = Camera.main.transform.position.x + (touchPosition.x-touchPosition2.x)*0.5f;
+			newCameraPosition.x = mainCamera.transform.position.x + (cameraTouchPosition.x-touchPosition2.x)*0.25f;
 			newCameraPosition.z = -100f;
 			newCameraPosition.y = 0f;
 
@@ -106,12 +107,13 @@ public class CannonTouch : MonoBehaviour
 
 	private void initialTouch()
 	{
-		if(touch == false)
+		if(Input.GetMouseButtonDown(0))
 		{
-			if(Input.GetMouseButtonDown(0))
+			if(touch == false)
 			{
-				if(touchLock == false){
-					touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+				if(touchLock == false)
+				{
+					Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 					RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
 					
 					if(hit.transform!=null)
@@ -125,24 +127,25 @@ public class CannonTouch : MonoBehaviour
 						else
 						{
 							touchCamera = true;
+							cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 						}
 					}
 					else
 					{
 						touchCamera = true;
+						cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 					}
 				}
 				else
 				{
 					touchCamera = true;
+					cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 				}
 			}
-		}
-		else
-		{
-			if(Input.GetMouseButtonDown(0))
+			else
 			{
 				touchCamera = true;
+				cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 			}
 		}
 	}
@@ -151,7 +154,7 @@ public class CannonTouch : MonoBehaviour
 	{
 		if(touch == true)
 		{
-			touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
 			angleRad = Mathf.Atan2((parent.position.y-touchPosition.y) , (parent.position.x-touchPosition.x));
 			float angleDeg = Mathf.Rad2Deg*angleRad;
@@ -211,7 +214,8 @@ public class CannonTouch : MonoBehaviour
 		float angleRad = Mathf.Atan2(velocity.y ,velocity.x);
 		float fTime = 0;
 		cannonNoseLine.SetVertexCount(10);
-		for(int i = 0;i<numberOfPoints;i++){
+		for(int i = 0;i<numberOfPoints;i++)
+		{
 			float dx = velocityMagnitude * fTime * Mathf.Cos(angleRad);
 			float dy = velocityMagnitude * fTime * Mathf.Sin(angleRad) - (Physics2D.gravity.magnitude * fTime * fTime / 2.0f);
 			Vector3 pos = new Vector3(cannonNose.position.x + dx ,cannonNose.position.y + dy,-3);

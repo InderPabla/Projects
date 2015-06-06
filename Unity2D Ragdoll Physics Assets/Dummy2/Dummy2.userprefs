@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CannonTouch.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CannonAmmoPhysics.cs">
     <Files>
-      <File FileName="Assets\GameMaster.cs" Line="16" Column="68" />
-      <File FileName="Assets\CameraTracker.cs" Line="145" Column="2" />
-      <File FileName="Assets\CannonBallSingle.cs" Line="16" Column="2" />
-      <File FileName="Assets\CannonBallTrio.cs" Line="29" Column="4" />
-      <File FileName="Assets\CannonTouch.cs" Line="38" Column="2" />
+      <File FileName="Assets\BodyHandler.cs" Line="27" Column="4" />
+      <File FileName="Assets\CameraTracker.cs" Line="143" Column="81" />
+      <File FileName="Assets\CannonAmmoHandler.cs" Line="4" Column="1" />
+      <File FileName="Assets\CannonAmmoPhysics.cs" Line="23" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
