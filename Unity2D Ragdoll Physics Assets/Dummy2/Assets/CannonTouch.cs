@@ -14,6 +14,7 @@ public class CannonTouch : MonoBehaviour
 
 	private bool childrenLoaded = false;
 	private bool touch = false;
+	private bool touchCamera = false;
 	private bool touchLock = false;
 
 	private const string CANNON_TOUCH_NAME = "CannonTouch";
@@ -21,10 +22,12 @@ public class CannonTouch : MonoBehaviour
 	private const string TOGGLE_TOUCH_LOCK_METHOD = "toggleTouchLock";
 	private const string CANNON_RICOCHET_ANIMATE_METHOD = "cannonRicochetAnimate";
 	private const string TRANSFORM_TO_FOLLOW_METHOD = "transformToFollow";
+	private const string FIX_GIVEN_CAMERA_POSITION_METHOD = "fixGivenCameraPosition";
 
 	private float angleRad = 0f;
 	private float touchLockToggleWaitTime = 2f;
 	private Vector2 velocity = Vector2.zero;
+	private Vector3 touchPosition = Vector3.zero;
 
 	public Transform cannonAmmo = null;
 	public GameObject cannonFire = null;
@@ -45,17 +48,19 @@ public class CannonTouch : MonoBehaviour
 
 	void Update () 
 	{
-		if(touchLock == false)
+		initialTouch();
+		afterTouch();
+		releaseTouch();
+
+		if(touchCamera == true)
 		{
-			if(touch == false)
-			{
-				initialTouch();
-			}
-			else
-			{
-				afterTouch();
-				releaseTouch();
-			}
+			Vector3 touchPosition2 = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			Vector3 newCameraPosition = Vector3.zero;
+			newCameraPosition.x = Camera.main.transform.position.x + (touchPosition.x-touchPosition2.x)*0.5f;
+			newCameraPosition.z = -100f;
+			newCameraPosition.y = 0f;
+
+			mainCamera.SendMessage(FIX_GIVEN_CAMERA_POSITION_METHOD,newCameraPosition);
 		}
 
 		if(childrenLoaded == false)
@@ -68,64 +73,96 @@ public class CannonTouch : MonoBehaviour
 	{
 		if(Input.GetMouseButtonUp(0))
 		{
-			line.SetPosition(0,Vector3.zero);
-			line.SetPosition(1,Vector3.zero);
+			if(touch == true)
+			{
+				line.SetPosition(0,Vector3.zero);
+				line.SetPosition(1,Vector3.zero);
 
 
-			for(int i = 0;i<numberOfPoints;i++){
-				cannonNoseLine.SetPosition(i,Vector3.zero);
+				for(int i = 0;i<numberOfPoints;i++)
+				{
+					cannonNoseLine.SetPosition(i,Vector3.zero);
+				}
+
+				CannonAmmoPhysics ammoPhysics = new CannonAmmoPhysics(angleRad,velocity,cannonNose.position);
+				cannonAmmo.SendMessage(FIRE_CANNON_AMMO_METHOD,ammoPhysics);
+
+				GameObject fire = Instantiate(cannonFire) as GameObject;
+				fire.transform.position = cannonNose.position;
+				fire.transform.eulerAngles = new Vector3(0,0,cannonFire.transform.eulerAngles.z + (Mathf.Rad2Deg*angleRad));
+				fire.SendMessage(TRANSFORM_TO_FOLLOW_METHOD,cannonNose);
+
+				touch = false;
+				toggleTouchLock();
+				Invoke (TOGGLE_TOUCH_LOCK_METHOD,touchLockToggleWaitTime);
+
+				this.SendMessage(CANNON_RICOCHET_ANIMATE_METHOD);
+
+				touchLock = true;
 			}
-
-			CannonAmmoPhysics ammoPhysics = new CannonAmmoPhysics(angleRad,velocity,cannonNose.position);
-			cannonAmmo.SendMessage(FIRE_CANNON_AMMO_METHOD,ammoPhysics);
-
-			GameObject fire = Instantiate(cannonFire) as GameObject;
-			fire.transform.position = cannonNose.position;
-			fire.transform.eulerAngles = new Vector3(0,0,cannonFire.transform.eulerAngles.z + (Mathf.Rad2Deg*angleRad));
-			fire.SendMessage(TRANSFORM_TO_FOLLOW_METHOD,cannonNose);
-
-			touch = false;
-			toggleTouchLock();
-			Invoke (TOGGLE_TOUCH_LOCK_METHOD,touchLockToggleWaitTime);
-
-			this.SendMessage(CANNON_RICOCHET_ANIMATE_METHOD);
-
-			touchLock = true;
+			touchCamera = false;
 		}
 	}
 
 	private void initialTouch()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(touch == false)
 		{
-			Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-			RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
-			
-			if(hit.transform!=null)
+			if(Input.GetMouseButtonDown(0))
 			{
-				string hitName = hit.collider.name;
-				
-				if(hitName.Equals(CANNON_TOUCH_NAME))
-				{
-					touch = true;
+				if(touchLock == false){
+					touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+					RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+					
+					if(hit.transform!=null)
+					{
+						string hitName = hit.collider.name;
+						
+						if(hitName.Equals(CANNON_TOUCH_NAME))
+						{
+							touch = true;
+						}
+						else
+						{
+							touchCamera = true;
+						}
+					}
+					else
+					{
+						touchCamera = true;
+					}
 				}
+				else
+				{
+					touchCamera = true;
+				}
+			}
+		}
+		else
+		{
+			if(Input.GetMouseButtonDown(0))
+			{
+				touchCamera = true;
 			}
 		}
 	}
 
 	private void afterTouch()
 	{
-		Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+		if(touch == true)
+		{
+			touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-		angleRad = Mathf.Atan2((parent.position.y-touchPosition.y) , (parent.position.x-touchPosition.x));
-		float angleDeg = Mathf.Rad2Deg*angleRad;
+			angleRad = Mathf.Atan2((parent.position.y-touchPosition.y) , (parent.position.x-touchPosition.x));
+			float angleDeg = Mathf.Rad2Deg*angleRad;
 
-		transform.eulerAngles = new Vector3(0,0,angleDeg);
+			transform.eulerAngles = new Vector3(0,0,angleDeg);
 
-		float distance = lineSet(cannonTouch.position,touchPosition,angleRad + 180*Mathf.Deg2Rad);
+			float distance = lineSet(cannonTouch.position,touchPosition,angleRad + 180*Mathf.Deg2Rad);
 
-		velocity = new Vector2(Mathf.Cos(angleRad)*margin*distance,Mathf.Sin(angleRad)*margin*distance);
-		drawProjectileLine(velocity);
+			velocity = new Vector2(Mathf.Cos(angleRad)*margin*distance,Mathf.Sin(angleRad)*margin*distance);
+			drawProjectileLine(velocity);
+		}
 	}
 
 	private float lineSet(Vector3 from, Vector3 to, float angleRad)

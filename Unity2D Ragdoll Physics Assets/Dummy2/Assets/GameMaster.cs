@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameMaster : MonoBehaviour {
+public class GameMaster : MonoBehaviour 
+{
 	public int entityCount = 0;
 	public GameObject slowMotionEnd;
 

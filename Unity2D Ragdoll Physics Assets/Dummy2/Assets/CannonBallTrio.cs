@@ -3,14 +3,20 @@ using System.Collections;
 
 public class CannonBallTrio : MonoBehaviour {
 
-	bool childrenLoaded = false;
-	float[] scalarQuantity = {1f,0.25f,0.5f};
+	private bool childrenLoaded = false;
+	private float[] scalarQuantity = {1f,0.8f,0.9f};
 
-	void Start () {
-	
+	private Transform mainCamera;
+
+	private const string TRACK_OBJECTS_METHOD = "trackObjects";
+
+	void Start () 
+	{
+		mainCamera = Camera.main.transform;
 	}
 
-	void Update () {
+	void Update () 
+	{
 		if(childrenLoaded == false)
 		{
 			getChildren();
@@ -27,6 +33,7 @@ public class CannonBallTrio : MonoBehaviour {
 
 	public void fireAmmo(CannonAmmoPhysics ammoPhysics)
 	{
+		Transform[] childArray = new Transform[3]; 
 		transform.position = ammoPhysics.positionOfAction;
 		for(int i=0;i<3;i++)
 		{
@@ -34,6 +41,8 @@ public class CannonBallTrio : MonoBehaviour {
 			velocity = new Vector2(velocity.x*scalarQuantity[i],velocity.y*scalarQuantity[i]);
 			Transform child = transform.GetChild(i);
 			child.rigidbody2D.velocity = velocity;
+			childArray[i] = child;
 		}
+		mainCamera.SendMessage(TRACK_OBJECTS_METHOD,childArray);
 	}
 }
