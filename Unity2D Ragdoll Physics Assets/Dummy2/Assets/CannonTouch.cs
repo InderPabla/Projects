@@ -140,7 +140,7 @@ public class CannonTouch : MonoBehaviour
 		}
 
 		Vector2 newTo2D = GetPosition(from.x,from.y,angleRad,distance);
-		Vector3 newTo3D = new Vector3(newTo2D.x,newTo2D.y,to.z);
+		Vector3 newTo3D = new Vector3(newTo2D.x,newTo2D.y,-3);
 		line.SetPosition(1,newTo3D);
 
 		return distance;
@@ -177,7 +177,7 @@ public class CannonTouch : MonoBehaviour
 		for(int i = 0;i<numberOfPoints;i++){
 			float dx = velocityMagnitude * fTime * Mathf.Cos(angleRad);
 			float dy = velocityMagnitude * fTime * Mathf.Sin(angleRad) - (Physics2D.gravity.magnitude * fTime * fTime / 2.0f);
-			Vector3 pos = new Vector3(cannonNose.position.x + dx ,cannonNose.position.y + dy,0);
+			Vector3 pos = new Vector3(cannonNose.position.x + dx ,cannonNose.position.y + dy,-3);
 			cannonNoseLine.SetPosition(i,pos);
 			fTime += 0.075f;
 		}

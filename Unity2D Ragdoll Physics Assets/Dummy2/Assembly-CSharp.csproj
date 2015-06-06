@@ -46,6 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BodyHandler.cs" />
+     <Compile Include="Assets\BodyPartPhysics.cs" />
+     <Compile Include="Assets\CameraTracker.cs" />
      <Compile Include="Assets\CannonAmmoHandler.cs" />
      <Compile Include="Assets\CannonAmmoPhysics.cs" />
      <Compile Include="Assets\CannonBallSingle.cs" />
@@ -53,7 +56,9 @@
      <Compile Include="Assets\CannonFire.cs" />
      <Compile Include="Assets\CannonRicochet.cs" />
      <Compile Include="Assets\CannonTouch.cs" />
+     <Compile Include="Assets\GameMaster.cs" />
      <Compile Include="Assets\Main Menu\MenuTouch.cs" />
+     <Compile Include="Assets\SlowMotionEnd.cs" />
      <Compile Include="Assets\TimedDelete.cs" />
      <Compile Include="Assets\WorldPhysics.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
