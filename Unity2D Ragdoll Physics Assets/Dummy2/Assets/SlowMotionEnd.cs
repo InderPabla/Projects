@@ -1,34 +1,60 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// SlowMotionEnd class changes colour of its object over time from white to light-cyan transparent blue.
+/// Almost like a Lighting flash.
+/// </summary>
 public class SlowMotionEnd : MonoBehaviour {
-	
-	void Start () {
-		Time.timeScale = 0.25f;
-		renderer.material.color  = new Color(1f,1f,1f,1f);
+
+	/// <summary>
+	/// Initialize components.
+	/// </summary>
+	void Start () 
+	{
+		renderer.material.color  = new Color(1f,1f,1f,1f); //color white, no transparency
 	}
 
-	void Update () {
-		Color color = renderer.material.color;
+	/// <summary>
+	/// Update is called once per frame.
+	/// </summary>
+	void Update () 
+	{
+		Color colour = renderer.material.color; //get color
 
-		float r = updateColor(color.r,0f,-1);
-		float g = updateColor(color.g,0.75f,-0.5f);
-		float b = updateColor(color.b,0.90f,-0.5f);
-		float a = updateColor(color.a,0.25f,-2);
-		renderer.material.color  = new Color(r,g,b,a);
+		//animate colors
+		float red = updateColor(colour.r,0f,-1);
+		float green = updateColor(colour.g,0.75f,-0.5f);
+		float blue = updateColor(colour.b,0.90f,-0.5f);
+		float alpha = updateColor(colour.a,0.25f,-2);
+
+		renderer.material.color  = new Color(red,green,blue,alpha);
 	}
 
-	float updateColor(float color,float stop, float amountPerTime){
-		color+=amountPerTime*Time.deltaTime;
-		if(amountPerTime>0){
-			if(color>=stop)
-				return stop;
+	/// <summary>
+	/// Method changes a given colour over time to another color
+	/// </summary>
+	/// <param name = 'colour'> Current colour </param>
+	/// <param name = 'stopColour'> Color to stop at </param>
+	/// <param name = 'amountPerTime'> Scale to add to colour over time </param>
+	/// <returns> Colour calculated </returns>
+	float updateColor(float colour,float stopColour, float amountPerTime)
+	{
+		colour += amountPerTime*Time.deltaTime; //add amount to color over Time.deltTime
+
+		//if out of count return stop color
+		if(amountPerTime>0)
+		{
+			if(colour>=stopColour)
+				return stopColour;
 		}
-		else if(amountPerTime<0){
-			if(color<=stop)
-				return stop;
+		else if(amountPerTime<0)
+		{
+			if(colour<=stopColour)
+				return stopColour;
 		}
-		return color;
+
+		return colour;
 	}
 
 }

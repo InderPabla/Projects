@@ -73,6 +73,7 @@ public class CannonTouch : MonoBehaviour
 			mainCamera.SendMessage(FIX_GIVEN_CAMERA_POSITION_METHOD,newCameraPosition);
 		}
 
+		//load children if false
 		if(childrenLoaded == false)
 		{
 			getChildren();
@@ -108,7 +109,8 @@ public class CannonTouch : MonoBehaviour
 
 				touch = false;
 				toggleTouchLock();
-				Invoke (TOGGLE_TOUCH_LOCK_METHOD,touchLockToggleWaitTime);
+
+				Invoke (TOGGLE_TOUCH_LOCK_METHOD,touchLockToggleWaitTime); //call invoke to create a thread which calls toggleTouchLock after a few seconds
 
 				this.SendMessage(CANNON_RICOCHET_ANIMATE_METHOD);
 
@@ -251,7 +253,7 @@ public class CannonTouch : MonoBehaviour
 	/// <param name = 'x'> X value. </param>
 	/// <param name = 'y'> Y value. </param>
 	/// <param name = 'angle'> Angle in radians to find new vector from. </param>
-	/// <param name = 'distance'> Distance offset from anglem </param>
+	/// <param name = 'distance'> Distance offset from angle </param>
 	/// <returns> Offseted 2D vector </returns>
 	private Vector2 GetPosition(float x,float y, float angle, float distance)
 	{
