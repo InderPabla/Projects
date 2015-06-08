@@ -62,6 +62,7 @@ public class CameraTracker : MonoBehaviour
 			if(warp == false)
 			{
 				float diff = Mathf.Abs(newCameraPosition.x - transform.position.x); //get absolute difference in camera position x-axis and new camera position x-axis
+				newCameraPosition.x = transform.position.x; //important to bring back to initial camera x
 
 				//if difference is <= threshold, then commence warping
 				if(diff<=followThreshold)
@@ -93,7 +94,7 @@ public class CameraTracker : MonoBehaviour
 			follow = false;	
 		}
 
-		fixCurrentCameraPosition(); //fix any irregularities in camera position
+		//fixCurrentCameraPosition(); //fix any irregularities in camera position
 	}
 
 	/// <summary>
@@ -183,6 +184,13 @@ public class CameraTracker : MonoBehaviour
 				position.z = -100;
 				if(position.y<maxDown)
 					position.y = maxDown;
+				transform.position = position;
+			}
+
+			else if(currentDown < maxDown)
+			{
+				Vector3 position = transform.position;
+				position.y = maxDown;
 				transform.position = position;
 			}
 		}

@@ -17,14 +17,47 @@ public class GameMaster : MonoBehaviour
 
 	private const string CHANGE_GRAVITY_METHOD = "changeGravity"; //Method in WorldPhysics 
 	private const string CHANGE_TIME_SCALE_METHOD = "changeTimeScale"; //Method in WorldPhysics 
+	private const string NEXT_LEVEL_BUTTON_NAME = "NextLevel"; //next level button name
+	private const string RESET_LEVEL_BUTTON_NAME = "ResetLevel"; //reset level button name
 
 	private Transform worldPhysics = null; //world physics object in the scene (child of GameMaster)
-	
+	private Camera mainCamera = null; //main camera
+
+	/// <summary>
+	/// Initialize components.
+	/// </summary>
+	void Start ()
+	{
+		this.mainCamera = Camera.main; //get main camera
+	}
+
 	/// <summary>
 	/// Update is called once per frame.
 	/// </summary>
 	void Update () 
 	{
+		//if touch on screen
+		if(Input.GetMouseButtonDown(0))
+		{
+			Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+			RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
+
+			//if something is found check its name
+			if(hit.transform!=null)
+			{
+				string hitName = hit.transform.name;
+
+				if(hitName.Equals(NEXT_LEVEL_BUTTON_NAME))
+				{
+					Application.LoadLevel(Application.loadedLevel+1);
+				}
+				else if(hitName.Equals(RESET_LEVEL_BUTTON_NAME))
+				{
+					Application.LoadLevel(Application.loadedLevel);
+				}
+			}
+		}
+
 		//load children if false
 		if(childrenLoaded == false)
 		{
