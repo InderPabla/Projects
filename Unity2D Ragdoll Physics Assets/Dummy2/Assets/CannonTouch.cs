@@ -134,33 +134,28 @@ public class CannonTouch : MonoBehaviour
 				if(touchLock == false)
 				{
 					Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-					RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero);
-					
-					//if something is found check its name
-					if(hit.transform!=null)
+					RaycastHit2D[] hits = Physics2D.RaycastAll(touchPosition, Vector2.zero);
+					bool cannonTouchFound = false;
+
+					//check if any ray cast hits are cannon touch
+					for(int i=0;i<hits.Length;i++)
 					{
-						string hitName = hit.collider.name;
-						
-						//if name matchs CannonTouch object in scene then start cannon barrel touch action
+						string hitName = hits[i].collider.name;
 						if(hitName.Equals(CANNON_TOUCH_NAME))
 						{
 							touch = true;
-						}
-
-						//if name does not match CannonTouch object, then start use camera tracking
-						else
-						{
-							touchCamera = true;
-							cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+							cannonTouchFound = true;
+							break;
 						}
 					}
 
-					//if nothing is found, then start user camera tracking
-					else
+					//if cannon touch not found, then start user camera tracking
+					if(cannonTouchFound != true)
 					{
 						touchCamera = true;
 						cameraTouchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 					}
+
 				}
 
 				//if touch lock is true, then start user camera tracking
