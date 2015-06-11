@@ -12,6 +12,12 @@ public class CannonBallTrio : MonoBehaviour {
 	private Transform mainCamera; //Transform of the current camera
 
 	private const string TRACK_OBJECTS_METHOD = "trackObjects"; //Method in CameraTracker to track this object
+	private const string CHANGE_DAMAGE_FORCES = "changeDamageForces"; //Method in CannonBallSingle to change damage forces to destroy an object
+
+	private float damageForce_1 = 2000f;
+	private float damageForce_2 = 1000f;
+	private float damageForce_3 = 500f;
+	private float damageForce_4 = 250f;
 
 	/// <summary>
 	/// Initialize components.
@@ -37,6 +43,8 @@ public class CannonBallTrio : MonoBehaviour {
 			velocity = new Vector2(velocity.x*scalarQuantity[i],velocity.y*scalarQuantity[i]);
 			Transform child = transform.GetChild(i);
 			child.rigidbody2D.velocity = velocity;
+
+			child.SendMessage(CHANGE_DAMAGE_FORCES,new float[] {damageForce_1,damageForce_2,damageForce_3,damageForce_4});
 			childArray[i] = child;
 		}
 		mainCamera.SendMessage(TRACK_OBJECTS_METHOD,childArray); //inform CameraTracker to track these 3 objects

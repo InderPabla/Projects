@@ -58,8 +58,19 @@ public class ObjectDamage : MonoBehaviour {
 		}*/
 	}
 
-	public void damage(float damageLevel)
+	public void damage(int damageLevel)
 	{
+		index += damageLevel;
 
+		if(index>=4)
+		{
+			GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
+			Destroy(gameObject);
+		}
+		else
+		{
+			if(index-1>=0)
+				spriteRenderer.sprite = objects[index-1];	
+		}
 	}
 }

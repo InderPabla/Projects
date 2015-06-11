@@ -56,7 +56,9 @@
      <Compile Include="Assets\CannonBallTrio.cs" />
      <Compile Include="Assets\CannonFire.cs" />
      <Compile Include="Assets\CannonRicochet.cs" />
+     <Compile Include="Assets\CannonShellSingle.cs" />
      <Compile Include="Assets\CannonTouch.cs" />
+     <Compile Include="Assets\CannonTouchSizeScaler.cs" />
      <Compile Include="Assets\GameMaster.cs" />
      <Compile Include="Assets\Main Menu\MenuTouch.cs" />
      <Compile Include="Assets\ObjectDamage.cs" />
