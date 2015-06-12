@@ -3,59 +3,44 @@ using System.Collections;
 
 public class ObjectDamage : MonoBehaviour {
 	public Sprite[] objects = new Sprite[3];
-	int index = 0;
-	SpriteRenderer spriteRenderer;
+	private int index = 0;
+	private int scorePerDestroy = 100;
+	private SpriteRenderer spriteRenderer;
 
 	public GameObject woodChips = null;
-	//private GameObject currentObject;
+
+	private const string WOOD_NAME = "Wood"; //Wood string name of destroyable objects
+	private const string GRASS_NAME = "Grass"; //Grass name
+	private const string GAME_MASTER_NAME = "GameMaster"; //GameMaster name
+	private const string DAMAGE_METHOD = "damage"; //Method in ObjectDamage to damage the object by some level
+	private const string ADD_SCORE = "addScore"; //Method in GameMaster to increment score
+
+	private GameObject gameMaster;
 
 	void Start () 
 	{
+		gameMaster = GameObject.Find(GAME_MASTER_NAME);
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		/*bool damaged = false;
-		float otherMass; // other object's mass
-		if (collision.rigidbody)
-			otherMass = collision.rigidbody.mass;
-		else 
-			otherMass = 10; // static collider means huge mass
-		float force = collision.relativeVelocity.sqrMagnitude * otherMass;
-		Debug.Log(force);
-
-
-
-		if(force>1200)
+		if(collision.collider.name.Contains("Wood"))
 		{
-			index += 4;
+			float otherMass; // other object's mass
+			if (collision.rigidbody)
+				otherMass = collision.rigidbody.mass;
+			else 
+				otherMass = 10; // static collider means huge mass
+			float force = rigidbody2D.velocity.sqrMagnitude * rigidbody2D.mass;
+			if(force>5)
+			{
+				//Debug.Log(force);
+				//renderer.material.color = Color.red;
+				//collision.collider.renderer.material.color = Color.red;
+				collision.collider.SendMessage(DAMAGE_METHOD,1);
+			}
 		}
-		else if(force>500)
-		{
-			index += 3;
-			damaged = true;
-		}
-		else if (force>200)
-		{
-			index += 2;
-			damaged = true;
-		}
-		else if (force>80)
-		{
-			index += 1;
-			damaged = true;
-		}
-
-		if(index>=4)
-		{
-			GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
-			Destroy(gameObject);
-		}
-		else if (damaged == true)
-		{
-			spriteRenderer.sprite = objects[index-1];	
-		}*/
 	}
 
 	public void damage(int damageLevel)
@@ -64,6 +49,7 @@ public class ObjectDamage : MonoBehaviour {
 
 		if(index>=4)
 		{
+			gameMaster.SendMessage(ADD_SCORE,scorePerDestroy);
 			GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
 			Destroy(gameObject);
 		}

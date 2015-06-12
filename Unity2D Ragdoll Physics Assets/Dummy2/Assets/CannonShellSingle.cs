@@ -13,7 +13,7 @@ public class CannonShellSingle: MonoBehaviour
 	private float damageForce_1 = 400f;
 	private float damageForce_2 = 200f;
 	private float damageForce_3 = 100f;
-	private float damageForce_4 = 50f;
+	private float damageForce_4 = 50f; 
 
 	private bool fired = false;
 	/// <summary>
@@ -60,8 +60,10 @@ public class CannonShellSingle: MonoBehaviour
 				otherMass = collision.rigidbody.mass;
 			else 
 				otherMass = 10; // static collider means huge mass
-			float force = collision.relativeVelocity.sqrMagnitude * rigidbody2D.mass;
-			
+			//float force = collision.relativeVelocity.sqrMagnitude * rigidbody2D.mass;
+			Debug.Log(rigidbody2D.velocity.sqrMagnitude);
+			float force = rigidbody2D.velocity.sqrMagnitude * rigidbody2D.mass;
+
 			if(force>damageForce_1)
 			{
 				damageLevel = 4;

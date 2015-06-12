@@ -12,14 +12,14 @@ public class CannonBallSingle : MonoBehaviour {
 	private const string DAMAGE_METHOD = "damage"; //Method in ObjectDamage to damage the object by some level
 	private const string WOOD_NAME = "Wood"; //Wood string name of destroyable objects
 
-	/*private float damageForce_1 = 400f;
+	private float damageForce_1 = 400f;
 	private float damageForce_2 = 200f;
 	private float damageForce_3 = 100f;
-	private float damageForce_4 = 50f;*/
-	private float damageForce_1 = 2000f;
+	private float damageForce_4 = 50f;
+	/*private float damageForce_1 = 2000f;
 	private float damageForce_2 = 1000f;
 	private float damageForce_3 = 500f;
-	private float damageForce_4 = 250f;
+	private float damageForce_4 = 250f;*/
 
 	/// <summary>
 	/// Initialize components.
@@ -52,7 +52,9 @@ public class CannonBallSingle : MonoBehaviour {
 				otherMass = collision.rigidbody.mass;
 			else 
 				otherMass = 10; // static collider means huge mass
-			float force = collision.relativeVelocity.sqrMagnitude * rigidbody2D.mass;
+
+			//float force = collision.relativeVelocity.sqrMagnitude * rigidbody2D.mass;
+			float force = rigidbody2D.velocity.sqrMagnitude * rigidbody2D.mass;
 
 			if(force>damageForce_1)
 			{
