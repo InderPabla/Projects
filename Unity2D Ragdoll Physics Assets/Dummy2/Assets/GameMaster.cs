@@ -17,6 +17,7 @@ public class GameMaster : MonoBehaviour
 
 	private const string CHANGE_GRAVITY_METHOD = "changeGravity"; //Method in WorldPhysics 
 	private const string CHANGE_TIME_SCALE_METHOD = "changeTimeScale"; //Method in WorldPhysics 
+	private const string DISPLAY_SCORE_DETAILS_METHOD = "displayScoreDetails"; //Method in CameraTracker
 	private const string NEXT_LEVEL_BUTTON_NAME = "NextLevel"; //next level button name
 	private const string RESET_LEVEL_BUTTON_NAME = "ResetLevel"; //reset level button name
 
@@ -81,6 +82,11 @@ public class GameMaster : MonoBehaviour
 				finished = true; //level is finished
 				worldPhysics.SendMessage(CHANGE_TIME_SCALE_METHOD,LEVEL_END_TIME_SCALE); //set new time scale
 				GameObject slowMotionEndLayer = Instantiate(slowMotionEnd) as GameObject; // create slowmo layer
+
+				//Get and display score
+				ScoreTracker scoreTracker = GetComponent<ScoreTracker>();
+				int score = scoreTracker.getScore();
+				mainCamera.SendMessage(DISPLAY_SCORE_DETAILS_METHOD,"Score: \n"+score);
 			}
 		}
 	}

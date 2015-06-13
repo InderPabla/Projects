@@ -1,13 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BodyHandler.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\GameMaster.cs">
     <Files>
-      <File FileName="Assets\CannonShellSingle.cs" Line="8" Column="2" />
-      <File FileName="Assets\CannonBallSingle.cs" Line="9" Column="1" />
-      <File FileName="Assets\SizeScaler.cs" Line="19" Column="16" />
-      <File FileName="Assets\ObjectDamage.cs" Line="52" Column="52" />
-      <File FileName="Assets\ScoreTracker.cs" Line="13" Column="3" />
-      <File FileName="Assets\BodyHandler.cs" Line="6" Column="15" />
+      <File FileName="Assets\BodyHandler.cs" Line="22" Column="2" />
+      <File FileName="Assets\ObjectDamage.cs" Line="7" Column="36" />
+      <File FileName="Assets\ScoreTracker.cs" Line="25" Column="16" />
+      <File FileName="Assets\GameMaster.cs" Line="92" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

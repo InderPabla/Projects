@@ -19,4 +19,10 @@ public class ScoreTracker : MonoBehaviour {
 		score += scoreAdd;
 		Debug.Log(score);
 	}
+
+	public int getScore ()
+	{
+		return score;
+	}
+	
 }

@@ -8,6 +8,7 @@ public class CameraTracker : MonoBehaviour
 {
 	public Transform boundLeft = null; //left most camera restriction (child of this camera object)
 	public Transform boundRight = null; //right most camera restriction (child of this camera object)
+	public TextMesh scoreMesh = null; //text mesh to display score
 
 	private Transform[] objectsTemp; //temporary objects to track
 
@@ -236,5 +237,10 @@ public class CameraTracker : MonoBehaviour
 				transform.position = newCameraPosition;
 			}
 		}	
+	}
+
+	public void displayScoreDetails(string scoreDetails)
+	{
+		scoreMesh.text = scoreDetails;
 	}
 }
