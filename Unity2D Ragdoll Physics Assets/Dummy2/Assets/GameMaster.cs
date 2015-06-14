@@ -14,12 +14,15 @@ public class GameMaster : MonoBehaviour
 
 	private const int NUMBER_OF_LEVELS = 2; //total numbers of levels in the game
 	private const float LEVEL_END_TIME_SCALE = 0.25f; //change world time scale after level end
+	private int scorePerNotUsedAmmo = 1000;
 
 	private const string CHANGE_GRAVITY_METHOD = "changeGravity"; //Method in WorldPhysics 
 	private const string CHANGE_TIME_SCALE_METHOD = "changeTimeScale"; //Method in WorldPhysics 
-	private const string DISPLAY_SCORE_DETAILS_METHOD = "displayScoreDetails"; //Method in CameraTracker
+	private const string DISPLAY_SCORE_DETAILS_METHOD = "displayScoreDetails"; //Method in CameraTracker, and GameMaster
+	private const string ADD_AMMO_SCORE_METHOD = "addAmmoScore"; //Method in ScoreTracker to increment ammo not used score
 	private const string NEXT_LEVEL_BUTTON_NAME = "NextLevel"; //next level button name
 	private const string RESET_LEVEL_BUTTON_NAME = "ResetLevel"; //reset level button name
+	private const string CANNON_AMMO_NAME = "CannonAmmo"; //GameObjects name inside Cannon which handels ammos
 
 	private Transform worldPhysics = null; //world physics object in the scene (child of GameMaster)
 	private Camera mainCamera = null; //main camera
@@ -83,10 +86,10 @@ public class GameMaster : MonoBehaviour
 				worldPhysics.SendMessage(CHANGE_TIME_SCALE_METHOD,LEVEL_END_TIME_SCALE); //set new time scale
 				GameObject slowMotionEndLayer = Instantiate(slowMotionEnd) as GameObject; // create slowmo layer
 
-				//Get and display score
-				ScoreTracker scoreTracker = GetComponent<ScoreTracker>();
-				int score = scoreTracker.getScore();
-				mainCamera.SendMessage(DISPLAY_SCORE_DETAILS_METHOD,"Score: \n"+score);
+				CannonAmmoHandler cannonAmmo = GameObject.Find(CANNON_AMMO_NAME).GetComponent<CannonAmmoHandler>();
+				int ammoScore = cannonAmmo.getAmmoNotUsed()*scorePerNotUsedAmmo;
+				this.SendMessage(ADD_AMMO_SCORE_METHOD,ammoScore);
+				Invoke(DISPLAY_SCORE_DETAILS_METHOD,0.25f); //wait 1/4th of a second (some objects might still be being destroyed at this moment)
 			}
 		}
 	}
@@ -101,6 +104,20 @@ public class GameMaster : MonoBehaviour
 			worldPhysics = transform.GetChild(0);
 			childrenLoaded = true;
 		}
+	}
+
+	void displayScoreDetails()
+	{
+		//Get and display score
+		ScoreTracker scoreTracker = GetComponent<ScoreTracker>();
+		string scoreMessage = "";
+		scoreMessage += "-Score-\n";
+		scoreMessage += "Destruction Score: "+scoreTracker.getObjectDamageScore()+".\n";
+		scoreMessage += "Enemy Score: "+scoreTracker.getEnemyDamageScore()+".\n";
+		scoreMessage += "Ammo Score: "+scoreTracker.getAmmoScore()+".\n";
+		scoreMessage += "Total Score: "+scoreTracker.getTotalScore()+".";
+
+		mainCamera.SendMessage(DISPLAY_SCORE_DETAILS_METHOD,scoreMessage);
 	}
 
 

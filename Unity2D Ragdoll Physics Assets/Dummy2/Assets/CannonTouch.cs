@@ -28,7 +28,7 @@ public class CannonTouch : MonoBehaviour
 	private const string FIX_GIVEN_CAMERA_POSITION_METHOD = "fixGivenCameraPosition"; //method in CameraTracker
 
 	private float angleRad = 0f; //angle in radians
-	private float touchLockToggleWaitTime = 2f; //max time to wait before toggle unlock of touch
+	private float touchLockToggleWaitTime = 1f; //max time to wait before toggle unlock of touch
 	private Vector2 velocity = Vector2.zero; 
 	private Vector3 cameraTouchPosition = Vector3.zero;
 

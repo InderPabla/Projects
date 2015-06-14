@@ -8,7 +8,7 @@ public class CameraTracker : MonoBehaviour
 {
 	public Transform boundLeft = null; //left most camera restriction (child of this camera object)
 	public Transform boundRight = null; //right most camera restriction (child of this camera object)
-	public TextMesh scoreMesh = null; //text mesh to display score
+	public Transform score = null;
 
 	private Transform[] objectsTemp; //temporary objects to track
 
@@ -26,7 +26,12 @@ public class CameraTracker : MonoBehaviour
 
 	private bool follow = false; //false = do not track objects, true = track objects
 	private bool warp = true; //false = do not jump camera to objects, true = jump camera to objects
-	
+
+	private const string CREATE_TEXT_PHYSICS_METHOD = "createTextPhysics"; //method in CameraTracker
+	private float textPhysicsWaitTime = 0.25f;
+
+	private TextMesh scoreMesh = null; //text mesh to display score
+
 	/// <summary>
 	/// Initialize components.
 	/// </summary>
@@ -37,6 +42,7 @@ public class CameraTracker : MonoBehaviour
 		maxRight = boundRight.position.x;
 		maxDown = transform.position.y;
 
+		scoreMesh = score.GetComponent<TextMesh>();
 		calculateCurrentCameraBounds(); //calculate current camera bounds
 	}
 
@@ -239,8 +245,38 @@ public class CameraTracker : MonoBehaviour
 		}	
 	}
 
+	/// <summary>
+	/// Set text mesh string and invoke text physics in the future
+	/// </summary>
+	/// <param name = 'scoreDetails'> String contaning score details to be set onto text mesh. </param>
 	public void displayScoreDetails(string scoreDetails)
 	{
+		follow = false; //stop tracking objects
+		warp = true; //resert warp
+
 		scoreMesh.text = scoreDetails;
+		Invoke(CREATE_TEXT_PHYSICS_METHOD,textPhysicsWaitTime);
+
+	}
+
+	/// <summary>
+	/// Set physics for text mesh of score and remove score from being child of main camera
+	/// </summary>
+	public void createTextPhysics()
+	{
+		score.parent = null;
+		scoreMesh.GetComponent<SizeScaler>().enabled = false;
+		scoreMesh.rigidbody2D.isKinematic = false;
+		scoreMesh.gameObject.AddComponent<BoxCollider2D>();
+		PhysicsMaterial2D customBounce = new PhysicsMaterial2D();
+		customBounce.bounciness = 0.65f;
+		customBounce.friction = 0.4f;
+		scoreMesh.collider2D.sharedMaterial = customBounce;
+
+		BoxCollider2D meshBox = score.GetComponent<BoxCollider2D>();
+		meshBox.size = new Vector2(meshBox.size.x,meshBox.size.y*0.9f);
+
+
+
 	}
 }

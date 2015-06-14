@@ -13,7 +13,9 @@ public class ObjectDamage : MonoBehaviour {
 	private const string GRASS_NAME = "Grass"; //Grass name
 	private const string GAME_MASTER_NAME = "GameMaster"; //GameMaster name
 	private const string DAMAGE_METHOD = "damage"; //Method in ObjectDamage to damage the object by some level
-	private const string ADD_SCORE = "addScore"; //Method in GameMaster to increment score
+	private const string ADD_OBJECT_DAMAGE_SCORE_METHOD = "addObjectDamageScore"; //Method in ScoreTracker to increment object damage score
+
+	//private const string ADD_SCORE = "addScore"; //Method in GameMaster to increment score
 
 	private GameObject gameMaster;
 
@@ -49,7 +51,7 @@ public class ObjectDamage : MonoBehaviour {
 
 		if(index>=4)
 		{
-			gameMaster.SendMessage(ADD_SCORE,scorePerDestroy);
+			gameMaster.SendMessage(ADD_OBJECT_DAMAGE_SCORE_METHOD,scorePerDestroy);
 			GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
 			Destroy(gameObject);
 		}
