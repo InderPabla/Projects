@@ -8,6 +8,7 @@ public class ObjectDamage : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 
 	public GameObject woodChips = null;
+	public bool destroyable = true;
 
 	private const string WOOD_NAME = "Wood"; //Wood string name of destroyable objects
 	private const string GRASS_NAME = "Grass"; //Grass name
@@ -47,18 +48,21 @@ public class ObjectDamage : MonoBehaviour {
 
 	public void damage(int damageLevel)
 	{
-		index += damageLevel;
+		if(destroyable == true)
+		{
+			index += damageLevel;
 
-		if(index>=4)
-		{
-			gameMaster.SendMessage(ADD_OBJECT_DAMAGE_SCORE_METHOD,scorePerDestroy);
-			GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
-			Destroy(gameObject);
-		}
-		else
-		{
-			if(index-1>=0)
-				spriteRenderer.sprite = objects[index-1];	
+			if(index>=4)
+			{
+				gameMaster.SendMessage(ADD_OBJECT_DAMAGE_SCORE_METHOD,scorePerDestroy);
+				GameObject chips = Instantiate(woodChips,transform.position,transform.rotation) as GameObject;
+				Destroy(gameObject);
+			}
+			else
+			{
+				if(index-1>=0)
+					spriteRenderer.sprite = objects[index-1];	
+			}
 		}
 	}
 }

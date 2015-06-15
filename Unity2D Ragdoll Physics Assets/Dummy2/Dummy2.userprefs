@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BodyPartPhysics.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ObjectDamage.cs">
     <Files>
-      <File FileName="Assets\GameMaster.cs" Line="22" Column="120" />
-      <File FileName="Assets\CannonTouch.cs" Line="238" Column="1" />
-      <File FileName="Assets\CameraTracker.cs" Line="247" Column="2" />
-      <File FileName="Assets\BodyPartPhysics.cs" Line="32" Column="19" />
+      <File FileName="Assets\Main Menu\LevelChooserAnimater.cs" Line="44" Column="8" />
+      <File FileName="Assets\Main Menu\LevelNumber.cs" Line="26" Column="1" />
+      <File FileName="Assets\Main Menu\MenuTouch.cs" Line="26" Column="17" />
+      <File FileName="Assets\ObjectDamage.cs" Line="12" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

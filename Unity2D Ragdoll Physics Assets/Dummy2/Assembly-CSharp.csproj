@@ -61,6 +61,9 @@
      <Compile Include="Assets\CannonTouch.cs" />
      <Compile Include="Assets\CannonTouchSizeScaler.cs" />
      <Compile Include="Assets\GameMaster.cs" />
+     <Compile Include="Assets\Main Menu\BackgroundColorChanger.cs" />
+     <Compile Include="Assets\Main Menu\LevelChooserAnimater.cs" />
+     <Compile Include="Assets\Main Menu\LevelNumber.cs" />
      <Compile Include="Assets\Main Menu\MenuTouch.cs" />
      <Compile Include="Assets\ObjectDamage.cs" />
      <Compile Include="Assets\PinchZoom.cs" />
