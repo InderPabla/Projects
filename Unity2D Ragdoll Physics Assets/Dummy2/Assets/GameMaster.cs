@@ -40,6 +40,11 @@ public class GameMaster : MonoBehaviour
 	/// </summary>
 	void Update () 
 	{
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+		{ 
+			Application.LoadLevel(0);
+		}
+
 		//if touch on screen
 		if(Input.GetMouseButtonDown(0))
 		{

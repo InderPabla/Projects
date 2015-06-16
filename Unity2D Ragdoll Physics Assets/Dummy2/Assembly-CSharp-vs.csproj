@@ -61,6 +61,8 @@
      <Compile Include="Assets\CannonTouch.cs" />
      <Compile Include="Assets\CannonTouchSizeScaler.cs" />
      <Compile Include="Assets\GameMaster.cs" />
+     <Compile Include="Assets\LevelDetail.cs" />
+     <Compile Include="Assets\LevelDetailHandler.cs" />
      <Compile Include="Assets\Main Menu\BackgroundColorChanger.cs" />
      <Compile Include="Assets\Main Menu\LevelChooserAnimater.cs" />
      <Compile Include="Assets\Main Menu\LevelNumber.cs" />
@@ -70,6 +72,7 @@
      <Compile Include="Assets\ScoreTracker.cs" />
      <Compile Include="Assets\SizeScaler.cs" />
      <Compile Include="Assets\SlowMotionEnd.cs" />
+     <Compile Include="Assets\Stars.cs" />
      <Compile Include="Assets\TimedDelete.cs" />
      <Compile Include="Assets\WorldPhysics.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />

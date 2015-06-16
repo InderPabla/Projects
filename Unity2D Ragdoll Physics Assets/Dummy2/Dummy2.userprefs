@@ -1,11 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\ObjectDamage.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LevelDetailHandler.cs">
     <Files>
-      <File FileName="Assets\Main Menu\LevelChooserAnimater.cs" Line="44" Column="8" />
-      <File FileName="Assets\Main Menu\LevelNumber.cs" Line="26" Column="1" />
-      <File FileName="Assets\Main Menu\MenuTouch.cs" Line="26" Column="17" />
-      <File FileName="Assets\ObjectDamage.cs" Line="12" Column="1" />
+      <File FileName="Assets\Stars.cs" Line="24" Column="40" />
+      <File FileName="Assets\LevelDetailHandler.cs" Line="46" Column="20" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

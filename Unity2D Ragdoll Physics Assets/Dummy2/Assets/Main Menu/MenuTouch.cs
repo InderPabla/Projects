@@ -25,6 +25,11 @@ public class MenuTouch : MonoBehaviour {
 
 	void Update () 
 	{
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+		{ 
+			Application.Quit(); 
+		}
+
 		if(cameraLoaded == true)
 		{
 			Vector3 touchPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
