@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class LevelNumber : MonoBehaviour {
+	private const string SET_STAR_METHOD = "setStar"; 
 	TextMesh nameMesh;
 
 	// Use this for initialization
@@ -21,5 +22,10 @@ public class LevelNumber : MonoBehaviour {
 	{	
 		gameObject.name = name;
 		transform.GetChild(0).GetComponent<TextMesh>().text = name;
+	}
+
+	public void setStar (int index)
+	{
+		transform.GetChild(1).SendMessage(SET_STAR_METHOD,index);
 	}
 }

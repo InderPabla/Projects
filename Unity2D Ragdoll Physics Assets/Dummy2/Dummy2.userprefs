@@ -1,9 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LevelDetailHandler.cs">
     <Files>
-      <File FileName="Assets\Stars.cs" Line="24" Column="40" />
-      <File FileName="Assets\LevelDetailHandler.cs" Line="46" Column="20" />
+      <File FileName="Assets\LevelDetail.cs" Line="17" Column="1" />
+      <File FileName="Assets\LevelDetailHandler.cs" Line="35" Column="20" />
+      <File FileName="Assets\Stars.cs" Line="32" Column="7" />
+      <File FileName="Assets\CameraTracker.cs" Line="250" Column="36" />
+      <File FileName="Assets\GameMaster.cs" Line="128" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

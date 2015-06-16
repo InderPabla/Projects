@@ -76,7 +76,7 @@ public class MenuTouch : MonoBehaviour {
 					else
 					{
 						Application.LoadLevel(int.Parse(hitName));
-						Debug.Log(hitName);
+						//Debug.Log(hitName);
 					}
 				}
 			}

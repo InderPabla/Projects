@@ -12,6 +12,7 @@ public class LevelChooserAnimater : MonoBehaviour {
 	private float t = 0f;
 	private bool state = false; 
 	private const string SET_NAME_METHOD = "setName";
+	public const string SET_STAR_METHOD = "setStar"; 
 	private int index = 0;
 
 
@@ -66,9 +67,11 @@ public class LevelChooserAnimater : MonoBehaviour {
 	public void changeLevelNames(int index)
 	{
 		int number = (index*10)+1;
+		LevelDetailHandler levelDetailHandler = new LevelDetailHandler();
 		foreach (GameObject child in children)
 		{
 			child.SendMessage(SET_NAME_METHOD,number+"");
+			child.SendMessage(SET_STAR_METHOD,levelDetailHandler.getStarIndex(number));
 			number++;
 		}
 	}

@@ -8,23 +8,24 @@ public class LevelDetailHandler
 	private string filePath = null;
 	private string fileName = "Ragdoll_Settings.txt";
 
-	float[,] levelScores = 
-	new float[,] 
+	public float[] levelScores = new float[20];
+
+	private float[,] levelScoresTemplate = new float[,] 
 	{ //levels
 		{ //level 1
-		 	1000,1000,1000 },
+		 	200,300,400 },
 		{ //level 2		 
-		 	1000,1000,1000 },
+		 	800,900,1000 },
 		{ //level 3		 
-		 	1000,1000,1000 },
+		 	1000,1200,1400 },
 		{ //level 4		 
-		 	1000,1000,1000 },
+		 	2000,2400,2500 },
 		{ //level 5		 
-		 	1000,1000,1000 },
+		 	2500,2700,2900 },
 		{ //level 6		 
-		 	1000,1000,1000 },
+		 	900,1000,1100 },
 		{ //level 7		 
-		 	1000,1000,1000 },
+		 	2600,3200,3500 },
 		{ //level 8		 
 		 	1000,1000,1000 },
 		{ //level 9		 
@@ -58,7 +59,46 @@ public class LevelDetailHandler
 		filePath = Application.persistentDataPath + "/" + fileName;
 		if(!File.Exists(filePath))
 		{
+			string[] linesToWrite = new string[20];
+			for(int i=0;i<20;i++)
+			{
+				linesToWrite[i] = "0";
+				levelScores[i] = 0;
+			}
+			File.WriteAllLines(filePath,linesToWrite);
 
+			Debug.Log(filePath);
+		}
+		else
+		{
+			string[] linesToRead = File.ReadAllLines(filePath);
+			for(int i=0;i<20;i++)
+			{
+				levelScores[i] = float.Parse(linesToRead[i]);
+			}
+		}
+	}
+
+	public int getStarIndex (int level)
+	{
+		int levelIndex = level-1;
+		float score = levelScores[levelIndex];
+
+		if (score>=levelScoresTemplate[levelIndex,2])
+		{
+			return 3;
+		}
+		else if (score>=levelScoresTemplate[levelIndex,1])
+		{
+			return 2;
+		}
+		else if (score>=levelScoresTemplate[levelIndex,0])
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
 		}
 	}
 
@@ -67,15 +107,21 @@ public class LevelDetailHandler
 		float score = detail.score;
 		int levelIndex = detail.level-1;
 
-		if (score>=levelScores[levelIndex,2])
+		if(score>levelScores[levelIndex])
+		{
+			levelScores[levelIndex] = score;
+			save ();
+		}
+
+		if (score>=levelScoresTemplate[levelIndex,2])
 		{
 			return 3;
 		}
-		else if (score>=levelScores[levelIndex,1])
+		else if (score>=levelScoresTemplate[levelIndex,1])
 		{
 			return 2;
 		}
-		else if (score>=levelScores[levelIndex,0])
+		else if (score>=levelScoresTemplate[levelIndex,0])
 		{
 			return 1;
 		}
@@ -83,6 +129,16 @@ public class LevelDetailHandler
 		{
 			return 0;
 		}
+	}
+
+	public void save()
+	{
+		string[] linesToWrite = new string[20];
+		for(int i=0;i<20;i++)
+		{
+			linesToWrite[i] = levelScores[i]+"";
+		}
+		File.WriteAllLines(filePath,linesToWrite);
 	}
 
 

@@ -9,6 +9,7 @@ public class CameraTracker : MonoBehaviour
 	public Transform boundLeft = null; //left most camera restriction (child of this camera object)
 	public Transform boundRight = null; //right most camera restriction (child of this camera object)
 	public Transform score = null;
+	public Transform star = null; 
 
 	private Transform[] objectsTemp; //temporary objects to track
 
@@ -28,6 +29,7 @@ public class CameraTracker : MonoBehaviour
 	private bool warp = true; //false = do not jump camera to objects, true = jump camera to objects
 
 	private const string CREATE_TEXT_PHYSICS_METHOD = "createTextPhysics"; //method in CameraTracker
+	private const string SET_STAR_METHOD = "setStar"; 
 	private float textPhysicsWaitTime = 0.25f;
 
 	private TextMesh scoreMesh = null; //text mesh to display score
@@ -243,6 +245,12 @@ public class CameraTracker : MonoBehaviour
 				transform.position = newCameraPosition;
 			}
 		}	
+	}
+
+	public void displayStar(int index)
+	{
+
+		star.SendMessage(SET_STAR_METHOD,index);
 	}
 
 	/// <summary>
