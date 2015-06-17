@@ -12,46 +12,46 @@ public class LevelDetailHandler
 
 	private float[,] levelScoresTemplate = new float[,] 
 	{ //levels
-		{ //level 1
-		 	200,300,400 },
+		{ //level 1 
+		 	100,500,600 },
 		{ //level 2		 
-		 	800,900,1000 },
+		 	100,1700,1800 },
 		{ //level 3		 
-		 	1000,1200,1400 },
+		 	100,2000,2400 },
 		{ //level 4		 
-		 	2000,2400,2500 },
+		 	100,3100,3300 },
 		{ //level 5		 
-		 	2500,2700,2900 },
+		 	100,2900,3400 },
 		{ //level 6		 
-		 	900,1000,1100 },
+		 	100,1200,2200 },
 		{ //level 7		 
-		 	2600,3200,3500 },
+		 	100,3200,3500 },
 		{ //level 8		 
-		 	1000,1000,1000 },
+		 	100,4600,5000 },
 		{ //level 9		 
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 10	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 11	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 12	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 13	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 14	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 15	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 16	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 17	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 18	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 19	    
-		 	1000,1000,1000 },
+		 	100,999,999 },
 		{ //level 20	    
-			1000,1000,1000 }
+			100,999,999 }
 	};
 
 	public LevelDetailHandler ()
@@ -67,7 +67,7 @@ public class LevelDetailHandler
 			}
 			File.WriteAllLines(filePath,linesToWrite);
 
-			Debug.Log(filePath);
+			//Debug.Log(filePath);
 		}
 		else
 		{
@@ -139,6 +139,14 @@ public class LevelDetailHandler
 			linesToWrite[i] = levelScores[i]+"";
 		}
 		File.WriteAllLines(filePath,linesToWrite);
+	}
+
+	public void delete()
+	{
+		if(File.Exists(filePath))
+		{
+			File.Delete(filePath);
+		}
 	}
 
 

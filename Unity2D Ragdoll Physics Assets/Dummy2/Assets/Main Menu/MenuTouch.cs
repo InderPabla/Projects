@@ -5,18 +5,24 @@ public class MenuTouch : MonoBehaviour {
 
 	public GameObject mainMenu_Prefab = null;
 	public GameObject levelPrefab = null;
-	
+	public GameObject confirmPrefab = null;
 
 	private Camera mainCamera;
 	private const string CHANGE_LEVEL_NAMES_METHOD = "changeLevelNames";
 	private const string LOAD_LEVEL_METHOD = "loadLevel";
 	private const string PLAY_BUTTON = "PlayButton";
+	private const string RESET_BUTTON = "ResetButton";
 	private const string NEXT_BUTTON = "Next";
 	private const string PREVIOUS_BUTTON = "Previous";
+	private const string YES_BUTTON = "Yes";
+	private const string NO_BUTTON = "No";
 	private const string LEVEL_1 = "Level_1";
 
 	private GameObject tempObject = null;
+	private GameObject tempConfirm = null;
+
 	private bool cameraLoaded = false;
+	private bool confirmState = false;
 	private int index = 0;
 	void Start () 
 	{
@@ -42,41 +48,66 @@ public class MenuTouch : MonoBehaviour {
 				{
 					string hitName = hit.collider.name;
 
-					if(hitName.Equals(PLAY_BUTTON))
+					if(confirmState == false)
 					{
-						index = 0;
+						if(hitName.Equals(PLAY_BUTTON))
+						{
+							index = 0;
 
-						Invoke(LOAD_LEVEL_METHOD,0.25f);
-						//Application.LoadLevel(LEVEL_1);
-					}
-					else if(hitName.Equals(NEXT_BUTTON))
-					{
-						index ++;
-						if(index>=2)
-						{
-							index --;
-						}
-						else
-						{
 							Invoke(LOAD_LEVEL_METHOD,0.25f);
+							//Application.LoadLevel(LEVEL_1);
 						}
-					}
-					else if(hitName.Equals(PREVIOUS_BUTTON))
-					{
-						index --;
-						if(index<0)
+						else if(hitName.Equals(NEXT_BUTTON))
 						{
 							index ++;
+							if(index>=2)
+							{
+								index --;
+							}
+							else
+							{
+								Invoke(LOAD_LEVEL_METHOD,0.25f);
+							}
+						}
+						else if(hitName.Equals(PREVIOUS_BUTTON))
+						{
+							index --;
+							if(index<0)
+							{
+								index = 0;
+								Destroy(tempObject);
+								tempObject = Instantiate(mainMenu_Prefab) as GameObject;
+							}
+							else
+							{
+								Invoke(LOAD_LEVEL_METHOD,0.25f);
+							}						
+						}
+						else if (hitName.Equals(RESET_BUTTON))
+						{
+							tempConfirm = Instantiate(confirmPrefab) as GameObject;
+							confirmState = true;
 						}
 						else
 						{
-							Invoke(LOAD_LEVEL_METHOD,0.25f);
-						}						
+							Application.LoadLevel(int.Parse(hitName));
+							//Debug.Log(hitName);
+						}
 					}
 					else
 					{
-						Application.LoadLevel(int.Parse(hitName));
-						//Debug.Log(hitName);
+						if(hitName.Equals(YES_BUTTON))
+						{
+							LevelDetailHandler levelDetailHandler = new LevelDetailHandler();
+							levelDetailHandler.delete();
+							Destroy(tempConfirm);
+							confirmState = false;
+						}
+						else if(hitName.Equals(NO_BUTTON))
+						{
+							Destroy(tempConfirm);
+							confirmState = false;
+						}
 					}
 				}
 			}

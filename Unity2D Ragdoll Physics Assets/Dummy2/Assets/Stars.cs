@@ -25,7 +25,7 @@ public class Stars : MonoBehaviour
 
 	public void setStar(int index)
 	{
-		Debug.Log(index);
+		//Debug.Log(index);
 		this.index = index;
 		if(loaded == true)
 			spriteRenderer.sprite = stars[index];
