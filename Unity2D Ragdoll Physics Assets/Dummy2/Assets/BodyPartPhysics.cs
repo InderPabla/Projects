@@ -43,7 +43,7 @@ public class BodyPartPhysics : MonoBehaviour
 				Destroy(joint); //destroy HingeJoint2D component on this object
 
 				//Create blood where this object currently is
-				//GameObject blood = Instantiate(bloodSplat,transform.position,transform.rotation) as GameObject;
+				GameObject blood = Instantiate(bloodSplat,transform.position,transform.rotation) as GameObject;
 
 				transform.parent.SendMessage(DAMAGE_METHOD,damage); //send message to parent (BodyHandler) to deal damage on the body
 			}

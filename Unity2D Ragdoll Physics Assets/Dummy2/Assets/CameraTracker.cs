@@ -166,6 +166,15 @@ public class CameraTracker : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Method is called to stop object tracking. (Object will be deleted so, tracking needs to be stopped)
+	/// </summary>
+	public void stopObjectTrack()
+	{
+		follow = false;
+		warp = false;
+	}
+
+	/// <summary>
 	/// Fix camera irregularities if any exist.
 	/// </summary>
 	public void fixCurrentCameraPosition()
@@ -283,8 +292,5 @@ public class CameraTracker : MonoBehaviour
 
 		BoxCollider2D meshBox = score.GetComponent<BoxCollider2D>();
 		meshBox.size = new Vector2(meshBox.size.x,meshBox.size.y*0.9f);
-
-
-
 	}
 }

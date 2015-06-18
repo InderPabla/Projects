@@ -4,7 +4,9 @@ using System.Collections;
 /// <summary>
 /// BodyHandler class handles body's damage models and informing GameMaster when this body is dead.
 /// </summary>
-public class BodyHandler : MonoBehaviour {
+public class BodyHandler : MonoBehaviour 
+{
+	public GameObject scorePopUpPrefab; 
 
 	private int health = 10; //max health is 10
 	private int deadHealth = 0; //This body dies at 0 health
@@ -13,6 +15,7 @@ public class BodyHandler : MonoBehaviour {
 
 	private const string ENTITY_DEATH_INFORM_METHOD = "entityDeathInform"; //method in GameMaster to inform when health = 0
 	private const string ADD_ENEMY_DAMAGE_SCORE_METHOD = "addEnemyDamageScore"; //Method in ScoreTracker to increment enemy damage score
+	private const string ANIMATE_POP_UP_METHOD = "animatePopUp";
 	//private const string ADD_SCORE = "addScore"; //Method in GameMaster to increment score
 
 	public GameObject gameMaster; //GameMaster object that is currently in the scene.
@@ -35,6 +38,10 @@ public class BodyHandler : MonoBehaviour {
 				dead = true;
 				gameMaster.SendMessage(ADD_ENEMY_DAMAGE_SCORE_METHOD,scorePerDestroy*2);
 				gameMaster.SendMessage(ENTITY_DEATH_INFORM_METHOD); //send message to GameMaster informing of death
+
+				GameObject scorePopUp = Instantiate (scorePopUpPrefab) as GameObject;
+				ScorePopUp popUp = new ScorePopUp(transform.position,(scorePerDestroy*2)+"");
+				scorePopUp.SendMessage(ANIMATE_POP_UP_METHOD,popUp);
 			}
 		}
 	}
