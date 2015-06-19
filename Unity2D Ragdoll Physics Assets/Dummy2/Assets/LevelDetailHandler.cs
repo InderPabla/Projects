@@ -54,6 +54,7 @@ public class LevelDetailHandler
 			100,999,999 }
 	};
 
+
 	public LevelDetailHandler ()
 	{
 		filePath = Application.persistentDataPath + "/" + fileName;
@@ -138,6 +139,7 @@ public class LevelDetailHandler
 		{
 			linesToWrite[i] = levelScores[i]+"";
 		}
+
 		File.WriteAllLines(filePath,linesToWrite);
 	}
 

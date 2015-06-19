@@ -10,6 +10,7 @@ public class CameraTracker : MonoBehaviour
 	public Transform boundRight = null; //right most camera restriction (child of this camera object)
 	public Transform score = null;
 	public Transform star = null; 
+	public SpriteRenderer nextLevel = null;
 
 	private Transform[] objectsTemp; //temporary objects to track
 
@@ -268,6 +269,8 @@ public class CameraTracker : MonoBehaviour
 	/// <param name = 'scoreDetails'> String contaning score details to be set onto text mesh. </param>
 	public void displayScoreDetails(string scoreDetails)
 	{
+		nextLevel.enabled = true;
+
 		follow = false; //stop tracking objects
 		warp = true; //resert warp
 

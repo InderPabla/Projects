@@ -24,7 +24,7 @@ public class CannonShellCluster : MonoBehaviour {
 	private float damageForce_4 = 250f; 
 	
 	private bool fired = false;
-
+	private bool touchTrigger = false;
 	/// <summary>
 	/// Initialize components.
 	/// </summary>
@@ -41,6 +41,13 @@ public class CannonShellCluster : MonoBehaviour {
 			float angleDeg = (Mathf.Atan2(velocity.y,velocity.x)*Mathf.Rad2Deg)-90;
 			transform.eulerAngles = new Vector3(0,0,angleDeg);
 		}
+		if(touchTrigger == true)
+		{
+			if(Input.GetMouseButtonDown(0))
+			{
+				activateClusterBomb();
+			}
+		}
 	}
 	
 	/// <summary>
@@ -56,6 +63,7 @@ public class CannonShellCluster : MonoBehaviour {
 		mainCamera.SendMessage(TRACK_OBJECTS_METHOD,new Transform[]{transform}); //inform CameraTracker to track this object
 		this.ammoPhysics = ammoPhysics;
 		fired = true;
+		touchTrigger = true;
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)

@@ -21,6 +21,7 @@ public class GameMaster : MonoBehaviour
 	private const string DISPLAY_SCORE_DETAILS_METHOD = "displayScoreDetails"; //Method in CameraTracker, and GameMaster
 	private const string ADD_AMMO_SCORE_METHOD = "addAmmoScore"; //Method in ScoreTracker to increment ammo not used score
 	private const string DISPLAY_STAR_METHOD = "displayStar"; 
+	private const string BACK_BUTTON_NAME = "BackButton"; //back button name
 	private const string NEXT_LEVEL_BUTTON_NAME = "NextLevel"; //next level button name
 	private const string RESET_LEVEL_BUTTON_NAME = "ResetLevel"; //reset level button name
 	private const string CANNON_AMMO_NAME = "CannonAmmo"; //GameObjects name inside Cannon which handels ammos
@@ -57,13 +58,17 @@ public class GameMaster : MonoBehaviour
 			{
 				string hitName = hit.transform.name;
 
-				if(hitName.Equals(NEXT_LEVEL_BUTTON_NAME))
+				if(hitName.Equals(BACK_BUTTON_NAME))
 				{
-					Application.LoadLevel(Application.loadedLevel+1);
+					Application.LoadLevel(0);
 				}
 				else if(hitName.Equals(RESET_LEVEL_BUTTON_NAME))
 				{
 					Application.LoadLevel(Application.loadedLevel);
+				}
+				else if(hitName.Equals(NEXT_LEVEL_BUTTON_NAME))
+				{
+					Application.LoadLevel(Application.loadedLevel+1);
 				}
 			}
 		}

@@ -46,6 +46,7 @@ public class CannonBallCluster : MonoBehaviour {
 			child.rigidbody2D.velocity = velocity;
 			startDeg += angleStepDeg;
 		}
+
 		Camera.main.SendMessage(TRACK_OBJECTS_METHOD,cannonBallNormalArray); //inform CameraTracker to track these 7 objects
 	}
 	

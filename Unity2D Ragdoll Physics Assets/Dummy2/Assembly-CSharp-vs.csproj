@@ -61,6 +61,7 @@
      <Compile Include="Assets\CannonShellSingle.cs" />
      <Compile Include="Assets\CannonTouch.cs" />
      <Compile Include="Assets\CannonTouchSizeScaler.cs" />
+     <Compile Include="Assets\ClusterInformationAnimater.cs" />
      <Compile Include="Assets\Explosion.cs" />
      <Compile Include="Assets\GameMaster.cs" />
      <Compile Include="Assets\LevelDetail.cs" />
