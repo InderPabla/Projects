@@ -16,7 +16,7 @@ public class BodyHandler : MonoBehaviour
 	private const string ENTITY_DEATH_INFORM_METHOD = "entityDeathInform"; //method in GameMaster to inform when health = 0
 	private const string ADD_ENEMY_DAMAGE_SCORE_METHOD = "addEnemyDamageScore"; //Method in ScoreTracker to increment enemy damage score
 	private const string ANIMATE_POP_UP_METHOD = "animatePopUp";
-	//private const string ADD_SCORE = "addScore"; //Method in GameMaster to increment score
+	private const string STOP_AUDIO_METHOD = "stopAudio"; //stop audio method
 
 	public GameObject gameMaster; //GameMaster object that is currently in the scene.
 	
@@ -27,6 +27,7 @@ public class BodyHandler : MonoBehaviour
 	public void damage(int damageAmount)
 	{
 		gameMaster.SendMessage(ADD_ENEMY_DAMAGE_SCORE_METHOD,scorePerDestroy);
+		//playAudio();
 		//If body is still alive
 		if(dead == false)
 		{
@@ -44,5 +45,19 @@ public class BodyHandler : MonoBehaviour
 				scorePopUp.SendMessage(ANIMATE_POP_UP_METHOD,popUp);
 			}
 		}
+	}
+
+	public void playAudio()
+	{
+		if(!audio.isPlaying)
+		{
+			this.GetComponent<AudioSource>().Play();
+			Invoke(STOP_AUDIO_METHOD,0.25f);
+		}
+	}
+	
+	public void stopAudio()
+	{
+		this.GetComponent<AudioSource>().Stop();
 	}
 }

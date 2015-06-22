@@ -36,7 +36,7 @@ public class ObjectDamage : MonoBehaviour {
 			else 
 				otherMass = 10; // static collider means huge mass
 			float force = rigidbody2D.velocity.sqrMagnitude * rigidbody2D.mass;
-			if(force>5)
+			if(force>75)
 			{
 				//Debug.Log(force);
 				//renderer.material.color = Color.red;

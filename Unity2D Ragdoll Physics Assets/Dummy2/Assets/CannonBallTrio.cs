@@ -14,10 +14,18 @@ public class CannonBallTrio : MonoBehaviour {
 	private const string TRACK_OBJECTS_METHOD = "trackObjects"; //Method in CameraTracker to track this object
 	private const string CHANGE_DAMAGE_FORCES = "changeDamageForces"; //Method in CannonBallSingle to change damage forces to destroy an object
 
-	private float damageForce_1 = 2000f;
+	private float damageForce_1 = 1000f;
+	private float damageForce_2 = 500f;
+	private float damageForce_3 = 200f;
+	private float damageForce_4 = 100f;
+	/*private float damageForce_1 = 2000f;
 	private float damageForce_2 = 1000f;
 	private float damageForce_3 = 500f;
-	private float damageForce_4 = 250f;
+	private float damageForce_4 = 250f;*/
+	/*private float damageForce_1 = 400f;
+	private float damageForce_2 = 200f;
+	private float damageForce_3 = 100f;
+	private float damageForce_4 = 50f;*/
 
 	/// <summary>
 	/// Initialize components.

@@ -83,6 +83,7 @@ public class LevelDetailHandler
 	public int getStarIndex (int level)
 	{
 		int levelIndex = level-1;
+		//Debug.Log(levelIndex);
 		float score = levelScores[levelIndex];
 
 		if (score>=levelScoresTemplate[levelIndex,2])

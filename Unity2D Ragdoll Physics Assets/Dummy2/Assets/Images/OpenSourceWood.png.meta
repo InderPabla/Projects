@@ -5,27 +5,27 @@ TextureImporter:
     21300000: Wood_Square_Hollow_1
     21300002: Wood_Triangle_Hollow_1
     21300004: Wood_Triangle_Hollow_4
-    21300006: OpenSourceWood_3
-    21300008: OpenSourceWood_4
+    21300006: Wood_Square_1
+    21300008: Wood_Small_Ball_1
     21300010: Wood_Triangle_1
     21300012: Wood_Big_Ball_2
     21300014: Wood_Big_Ball_3
-    21300016: OpenSourceWood_8
+    21300016: Wood_Square_2
     21300018: OpenSourceWood_9
     21300020: OpenSourceWood_10
     21300022: OpenSourceWood_11
     21300024: OpenSourceWood_12
     21300026: Wood_Triangle_4
-    21300028: OpenSourceWood_14
+    21300028: Wood_Small_Ball_4
     21300030: Wood_Rect_Longest_1
     21300032: Wood_Big_Ball_1
-    21300034: OpenSourceWood_17
+    21300034: Wood_Small_Ball_2
     21300036: Wood_Rect_Longer_3
     21300038: OpenSourceWood_19
     21300040: Wood_Triangle_3
     21300042: Wood_Rect_Longer_4
     21300044: OpenSourceWood_22
-    21300046: OpenSourceWood_23
+    21300046: Wood_Square_3
     21300048: Wood_Rect_Long_1
     21300050: Wood_Rect_Long_3
     21300052: Wood_Rect_Long_2
@@ -37,8 +37,8 @@ TextureImporter:
     21300064: Wood_Square_Hollow_3
     21300066: Wood_Square_Hollow_4
     21300068: Wood_Triangle_2
-    21300070: OpenSourceWood_35
-    21300072: OpenSourceWood_36
+    21300070: Wood_Small_Ball_3
+    21300072: Wood_Square_4
     21300074: Wood_Rect_Longest_2
     21300076: Wood_Rect_Longest_3
     21300078: Wood_Rect_Longest_4
@@ -121,7 +121,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_3
+    - name: Wood_Square_1
       rect:
         serializedVersion: 2
         x: 422
@@ -131,7 +131,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_4
+    - name: Wood_Small_Ball_1
       rect:
         serializedVersion: 2
         x: 421
@@ -171,7 +171,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_8
+    - name: Wood_Square_2
       rect:
         serializedVersion: 2
         x: 399
@@ -231,7 +231,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_14
+    - name: Wood_Small_Ball_4
       rect:
         serializedVersion: 2
         x: 252
@@ -261,7 +261,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_17
+    - name: Wood_Small_Ball_2
       rect:
         serializedVersion: 2
         x: 167
@@ -321,7 +321,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_23
+    - name: Wood_Square_3
       rect:
         serializedVersion: 2
         x: 168
@@ -441,7 +441,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_35
+    - name: Wood_Small_Ball_3
       rect:
         serializedVersion: 2
         x: 209
@@ -451,7 +451,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: OpenSourceWood_36
+    - name: Wood_Square_4
       rect:
         serializedVersion: 2
         x: 210

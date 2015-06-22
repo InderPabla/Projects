@@ -66,6 +66,7 @@
      <Compile Include="Assets\GameMaster.cs" />
      <Compile Include="Assets\LevelDetail.cs" />
      <Compile Include="Assets\LevelDetailHandler.cs" />
+     <Compile Include="Assets\LineSizeScaler.cs" />
      <Compile Include="Assets\Main Menu\BackgroundColorChanger.cs" />
      <Compile Include="Assets\Main Menu\LevelChooserAnimater.cs" />
      <Compile Include="Assets\Main Menu\LevelNumber.cs" />

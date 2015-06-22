@@ -42,6 +42,7 @@ public class CannonBallSingle : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		//collision material is wood
 		if(collision.collider.name.Contains("Wood"))
 		{
 			bool damaged = true;
@@ -56,9 +57,10 @@ public class CannonBallSingle : MonoBehaviour {
 			//float force = collision.relativeVelocity.sqrMagnitude * rigidbody2D.mass;
 			float force = rigidbody2D.velocity.sqrMagnitude * rigidbody2D.mass;
 
+			//damage forces on this object from highest to lowest
 			if(force>damageForce_1)
 			{
-				damageLevel = 4;
+				damageLevel = 4; 
 			}
 			else if(force>damageForce_2)
 			{
@@ -84,6 +86,10 @@ public class CannonBallSingle : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Method changes damage forces.
+	/// </summary>
+	/// <param name = 'damageForces'> New damages to set. </param>
 	public void changeDamageForces(float[] damageForces)
 	{
 		this.damageForce_1 = damageForces[0];

@@ -26,6 +26,7 @@ public class CannonTouch : MonoBehaviour
 	private const string CANNON_RICOCHET_ANIMATE_METHOD = "cannonRicochetAnimate"; //method in CannonBarrelRicochet
 	private const string TRANSFORM_TO_FOLLOW_METHOD = "transformToFollow"; //method in CameraTracker
 	private const string FIX_GIVEN_CAMERA_POSITION_METHOD = "fixGivenCameraPosition"; //method in CameraTracker
+	private const string STOP_AUDIO_METHOD = "stopAudio"; //stop audio method
 
 	private float angleRad = 0f; //angle in radians
 	private float touchLockToggleWaitTime = 1f; //max time to wait before toggle unlock of touch
@@ -113,11 +114,23 @@ public class CannonTouch : MonoBehaviour
 				Invoke (TOGGLE_TOUCH_LOCK_METHOD,touchLockToggleWaitTime); //call invoke to create a thread which calls toggleTouchLock after a few seconds
 
 				this.SendMessage(CANNON_RICOCHET_ANIMATE_METHOD);
+				playAudio();
 
 				touchLock = true;
 			}
 			touchCamera = false;
 		}
+	}
+
+	public void playAudio()
+	{
+		this.GetComponent<AudioSource>().Play();
+		Invoke(STOP_AUDIO_METHOD,1f);
+	}
+
+	public void stopAudio()
+	{
+		this.GetComponent<AudioSource>().Stop();
 	}
 
 	/// <summary>
