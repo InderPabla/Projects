@@ -73,6 +73,7 @@
      <Compile Include="Assets\Main Menu\MenuTouch.cs" />
      <Compile Include="Assets\ObjectDamage.cs" />
      <Compile Include="Assets\PinchZoom.cs" />
+     <Compile Include="Assets\PolygonShader.cs" />
      <Compile Include="Assets\ScorePopUp.cs" />
      <Compile Include="Assets\ScorePopUpAnimater.cs" />
      <Compile Include="Assets\ScoreTracker.cs" />
@@ -80,6 +81,7 @@
      <Compile Include="Assets\SlowMotionEnd.cs" />
      <Compile Include="Assets\Stars.cs" />
      <Compile Include="Assets\TimedDelete.cs" />
+     <Compile Include="Assets\Triangulator.cs" />
      <Compile Include="Assets\WorldPhysics.cs" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Particle Shaders\Mobile Multiply Culled.shader" />
      <None Include="Assets\Standard Assets (Mobile)\Shaders\Miscellaneous Shaders\Mobile Background.shader" />

@@ -31,7 +31,7 @@ public class LevelDetailHandler
 		{ //level 9		 
 		 	100,999,999 },
 		{ //level 10	    
-		 	100,999,999 },
+		 	100,2500,3000 },
 		{ //level 11	    
 		 	100,999,999 },
 		{ //level 12	    
