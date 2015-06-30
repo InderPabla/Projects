@@ -53,6 +53,7 @@
      <Compile Include="Assets\CannonAmmoHandler.cs" />
      <Compile Include="Assets\CannonAmmoPhysics.cs" />
      <Compile Include="Assets\CannonBallCluster.cs" />
+     <Compile Include="Assets\CannonBallEnlarger.cs" />
      <Compile Include="Assets\CannonBallSingle.cs" />
      <Compile Include="Assets\CannonBallTrio.cs" />
      <Compile Include="Assets\CannonFire.cs" />

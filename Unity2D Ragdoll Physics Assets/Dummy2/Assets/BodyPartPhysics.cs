@@ -50,5 +50,18 @@ public class BodyPartPhysics : MonoBehaviour
 		}
 	}
 
+	public void breakPart()
+	{
+		if(broken == false)
+		{
+			broken = true; //this part is now broken
+			Destroy(joint); //destroy HingeJoint2D component on this object
+			//Create blood where this object currently is
+			GameObject blood = Instantiate(bloodSplat,transform.position,transform.rotation) as GameObject;
+			transform.parent.SendMessage(DAMAGE_METHOD,damage); //send message to parent (BodyHandler) to deal damage on the body
+			rigidbody2D.velocity = Vector2.zero;
+		}
+	}
+
 
 }
