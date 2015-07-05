@@ -76,6 +76,9 @@ public class CannonBallEnlarger : MonoBehaviour {
 		{
 			if(timeDelta2 < 1f)
 			{
+				rigidbody2D.drag = 0f;
+				rigidbody2D.angularDrag = 0f;
+				rigidbody2D.mass = 0.75f;
 				transform.localScale = Vector3.Lerp(initialScale,initialScale/13f,timeDelta2);
 				timeDelta2 += Time.deltaTime*9f;
 			}
@@ -99,18 +102,18 @@ public class CannonBallEnlarger : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
-		if(once == true)
-			rigidbody2D.drag = 2f;
+		//if(once == true)
+			//rigidbody2D.drag = 2f;
 
 
-		Debug.Log(once + "  " + collision.collider.name.Contains(BREAK_NAME) + "  " + isGettingBigger);
+		//Debug.Log(once + "  " + collision.collider.name.Contains(BREAK_NAME) + "  " + isGettingBigger);
 		if(once == true && collision.collider.name.Contains(BREAK_NAME) && isGettingBigger == true)
 		{
 			bool damage = true;
 			float force = (rigidbody2D.velocity.sqrMagnitude+300) * rigidbody2D.mass;
 			if(force>1000)
 				collision.collider.SendMessage(BREAK_PART_METHOD);
-			Debug.Log(force);
+			//Debug.Log(force);
 			
 		}
 
@@ -169,7 +172,8 @@ public class CannonBallEnlarger : MonoBehaviour {
 		{
 			//transform.localScale *= 10f;
 			rigidbody2D.mass = 5f;
-
+			rigidbody2D.drag = 2f;
+			rigidbody2D.angularDrag = 100f;
 			rigidbody2D.velocity = Vector2.zero;
 			once = true;
 		}
