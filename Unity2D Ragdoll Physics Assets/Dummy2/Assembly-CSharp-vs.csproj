@@ -52,6 +52,7 @@
      <Compile Include="Assets\CameraTracker.cs" />
      <Compile Include="Assets\CannonAmmoHandler.cs" />
      <Compile Include="Assets\CannonAmmoPhysics.cs" />
+     <Compile Include="Assets\CannonBallBomb.cs" />
      <Compile Include="Assets\CannonBallCluster.cs" />
      <Compile Include="Assets\CannonBallEnlarger.cs" />
      <Compile Include="Assets\CannonBallSingle.cs" />
