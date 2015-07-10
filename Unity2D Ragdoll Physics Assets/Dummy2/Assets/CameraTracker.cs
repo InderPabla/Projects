@@ -32,7 +32,7 @@ public class CameraTracker : MonoBehaviour
 	private const string CREATE_TEXT_PHYSICS_METHOD = "createTextPhysics"; //method in CameraTracker
 	private const string SET_STAR_METHOD = "setStar"; 
 	private float textPhysicsWaitTime = 0.25f;
-
+	private float initialY = 0f;
 	private TextMesh scoreMesh = null; //text mesh to display score
 
 	/// <summary>
@@ -44,6 +44,8 @@ public class CameraTracker : MonoBehaviour
 		maxLeft = boundLeft.position.x; 
 		maxRight = boundRight.position.x;
 		maxDown = transform.position.y;
+
+
 
 		scoreMesh = score.GetComponent<TextMesh>();
 		calculateCurrentCameraBounds(); //calculate current camera bounds
@@ -221,6 +223,10 @@ public class CameraTracker : MonoBehaviour
 	/// <param name = 'newCameraPosition'> The vector to check for irregularities and set to camera position. </param>
 	public void fixGivenCameraPosition(Vector3 newCameraPosition)
 	{
+
+		if(newCameraPosition.y<maxDown)
+			newCameraPosition.y = maxDown;
+
 		//calculate new current  bounds
 		currentLeft = newCameraPosition.x - cameraWidth/2f; 
 		currentRight = newCameraPosition.x + cameraWidth/2f;

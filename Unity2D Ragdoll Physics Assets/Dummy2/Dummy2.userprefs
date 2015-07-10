@@ -1,13 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CannonBallBomb.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CannonTouch.cs">
     <Files>
-      <File FileName="Assets\CannonTouch.cs" Line="200" Column="37" />
-      <File FileName="Assets\CannonBallBomb.cs" Line="71" Column="46" />
-      <File FileName="Assets\CannonBallSingle.cs" Line="82" Column="23" />
-      <File FileName="Assets\CannonBallEnlarger.cs" Line="11" Column="44" />
-      <File FileName="Assets\CameraTracker.cs" Line="1" Column="1" />
-      <File FileName="Assets\CannonShellCluster.cs" Line="15" Column="118" />
+      <File FileName="Assets\CannonTouch.cs" Line="1" Column="1" />
+      <File FileName="Assets\CannonBallSingle.cs" Line="1" Column="1" />
+      <File FileName="Assets\CannonBallEnlarger.cs" Line="1" Column="1" />
+      <File FileName="Assets\CannonShellCluster.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
