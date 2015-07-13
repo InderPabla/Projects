@@ -57,16 +57,35 @@ public class CannonBallBomb : MonoBehaviour {
 
 			if(affectedColliders[i].name.Contains(WOOD_NAME) || affectedColliders[i].name.Contains("Break"))
 			{	
+			
 
 				Vector2 affectedObject = new Vector2(affectedColliders[i].transform.position.x,affectedColliders[i].transform.position.y);
 				float distance = Vector2.Distance(affectedObject,position);
 				float angleRad = Mathf.Atan2((affectedObject.y-position.y),(affectedObject.x-position.x));
 				Vector2 newVelocity = new Vector2(Mathf.Cos(angleRad)*power,Mathf.Sin(angleRad)*power);
+				newVelocity.x *= radius/distance;/*(Mathf.Pow(distance,0.5f) Mathf.Pow(radius+1,0.5f));*/
+				newVelocity.y *= radius/distance;/*(Mathf.Pow(distance,0.5f) Mathf.Pow(radius+1,0.5f));*/
 
 
-				//affectedColliders[i].rigidbody2D.velocity = newVelocity;
+				affectedColliders[i].rigidbody2D.velocity = newVelocity;
 
-				if(distance<=(radius/2f))
+
+				Debug.Log(distance+" "+affectedColliders[i].name+" "+newVelocity.magnitude+" "+power*0.9f);
+				if(affectedColliders[i].name.Contains(WOOD_NAME))
+				{
+					//Debug.Log(newVelocity.magnitude+" "+power+" "+power*0.9f);
+					if(newVelocity.magnitude >= power*1.25f)
+					{
+							affectedColliders[i].SendMessage(DAMAGE_METHOD,4);
+							Debug.Log(222);
+					}
+				}
+				else if(affectedColliders[i].name.Contains("Break"))
+				{
+
+				}
+				
+				/*if(distance<=(radius/2f))
 				{
 					if(affectedColliders[i].name.Contains(WOOD_NAME))
 					{
@@ -89,7 +108,7 @@ public class CannonBallBomb : MonoBehaviour {
 						affectedColliders[i].SendMessage(BREAK_PART_METHOD);
 						affectedColliders[i].rigidbody2D.velocity = newVelocity;
 					}
-				}
+				}*/
 				//Debug.Log("POWER: "+power);
 				//Debug.Log("New Velo: "+newVelocity);
 
