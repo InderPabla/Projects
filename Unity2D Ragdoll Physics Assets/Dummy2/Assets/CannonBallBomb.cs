@@ -70,14 +70,14 @@ public class CannonBallBomb : MonoBehaviour {
 				affectedColliders[i].rigidbody2D.velocity = newVelocity;
 
 
-				Debug.Log(distance+" "+affectedColliders[i].name+" "+newVelocity.magnitude+" "+power*0.9f);
+				//Debug.Log(distance+" "+affectedColliders[i].name+" "+newVelocity.magnitude+" "+power*0.9f);
 				if(affectedColliders[i].name.Contains(WOOD_NAME))
 				{
 					//Debug.Log(newVelocity.magnitude+" "+power+" "+power*0.9f);
-					if(newVelocity.magnitude >= power*1.25f)
+					if(newVelocity.magnitude >= power*1.75f)
 					{
 							affectedColliders[i].SendMessage(DAMAGE_METHOD,4);
-							Debug.Log(222);
+							//Debug.Log(222);
 					}
 				}
 				else if(affectedColliders[i].name.Contains("Break"))
