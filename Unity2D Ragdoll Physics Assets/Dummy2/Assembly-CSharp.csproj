@@ -54,6 +54,7 @@
      <Compile Include="Assets\CannonAmmoPhysics.cs" />
      <Compile Include="Assets\CannonBallBomb.cs" />
      <Compile Include="Assets\CannonBallCluster.cs" />
+     <Compile Include="Assets\CannonBallClusterFlip.cs" />
      <Compile Include="Assets\CannonBallEnlarger.cs" />
      <Compile Include="Assets\CannonBallSingle.cs" />
      <Compile Include="Assets\CannonBallTrio.cs" />

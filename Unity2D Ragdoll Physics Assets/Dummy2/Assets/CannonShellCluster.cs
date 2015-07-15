@@ -7,6 +7,7 @@ public class CannonShellCluster : MonoBehaviour {
 	public GameObject cannonBallClusterPrefab = null;
 	public float time = 1f;
 
+
 	private const string ACTIVATE_CLUSTER_BOMB = "activateClusterBomb";
 
 	private Transform mainCamera; //Transform of the main camera

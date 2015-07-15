@@ -41,7 +41,17 @@ public class BodyHandler : MonoBehaviour
 				gameMaster.SendMessage(ENTITY_DEATH_INFORM_METHOD); //send message to GameMaster informing of death
 
 				GameObject scorePopUp = Instantiate (scorePopUpPrefab) as GameObject;
-				ScorePopUp popUp = new ScorePopUp(transform.position,(scorePerDestroy*2)+"");
+
+				Vector3 popUpPosition = Vector3.zero;
+				for(int i = 0 ;i<6;i++)
+				{
+					popUpPosition.x += transform.GetChild(i).position.x;
+					popUpPosition.y += transform.GetChild(i).position.y;
+				}
+				popUpPosition.x /= 6f;
+				popUpPosition.y /= 6f;
+
+				ScorePopUp popUp = new ScorePopUp(popUpPosition,(scorePerDestroy*2)+"");
 				scorePopUp.SendMessage(ANIMATE_POP_UP_METHOD,popUp);
 			}
 		}

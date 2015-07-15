@@ -4,7 +4,7 @@ using System.Collections;
 public class JointStressAnalyzer : MonoBehaviour 
 {
 	private HingeJoint2D[] joints; 
-
+	public float breakForce = 2000;
 	// Use this for initialization
 	void Start () 
 	{
@@ -25,7 +25,7 @@ public class JointStressAnalyzer : MonoBehaviour
 				float forceOnJointMagnitude = forceOnJoint.magnitude;
 				//Debug.Log(forceOnJointMagnitude);
 
-				if(forceOnJointMagnitude>2000)
+				if(forceOnJointMagnitude>breakForce)
 				{
 					Destroy(joints[i]);
 				}
