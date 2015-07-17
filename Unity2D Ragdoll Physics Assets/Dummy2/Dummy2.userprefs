@@ -1,12 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\AngularMomentum.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\LevelDetailHandler.cs">
     <Files>
-      <File FileName="Assets\AngularMomentum.cs" Line="16" Column="1" />
-      <File FileName="Assets\BodyHandler.cs" Line="23" Column="15" />
-      <File FileName="Assets\JointStressAnalyzer.cs" Line="1" Column="1" />
-      <File FileName="Assets\CannonBallBomb.cs" Line="1" Column="1" />
-      <File FileName="Assets\BodyPartPhysics.cs" Line="1" Column="1" />
+      <File FileName="Assets\LevelDetailHandler.cs" Line="42" Column="13" />
       <File FileName="Assets\ObjectDamage.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

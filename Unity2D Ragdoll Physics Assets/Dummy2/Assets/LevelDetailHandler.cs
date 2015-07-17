@@ -13,33 +13,33 @@ public class LevelDetailHandler
 	private float[,] levelScoresTemplate = new float[,] 
 	{ //levels
 		{ //level 1 
-		 	100,500,600 },
+		 	100,500,600 }, //no change required
 		{ //level 2		 
-		 	100,1700,1800 },
+			100,1700,1800 }, //no change required
 		{ //level 3		 
-		 	100,2000,2400 },
+			100,2000,2400 }, //no change required
 		{ //level 4		 
-		 	100,3100,3300 },
+			100,3100,3300 }, //no change required
 		{ //level 5		 
-		 	100,2900,3400 },
+			100,2900,3400 }, //no change required
 		{ //level 6		 
-		 	100,1200,2200 },
+			100,1200,2200 }, //no change required
 		{ //level 7		 
-		 	100,3200,3500 },
+			100,3000,4000 }, //no change required
 		{ //level 8		 
-		 	100,4600,5000 },
+			100,4500,5000 }, //no change required
 		{ //level 9		 
-		 	100,999,999 },
+			100,2500,3000 }, //no change required
 		{ //level 10	    
-		 	100,2500,3000 },
+			100,3000,4000 }, //no change required
 		{ //level 11	    
-		 	100,999,999 },
+			100,3000,3500 }, //no change required
 		{ //level 12	    
-		 	100,999,999 },
+			100,3000,4000 }, //no change required
 		{ //level 13	    
-		 	100,999,999 },
+			100,1000,1500 }, //no change required
 		{ //level 14	    
-		 	100,999,999 },
+		 	100,4000,5500 },
 		{ //level 15	    
 		 	100,999,999 },
 		{ //level 16	    
