@@ -50,6 +50,7 @@
      <Compile Include="Assets\BackgroundScaler.cs" />
      <Compile Include="Assets\BodyHandler.cs" />
      <Compile Include="Assets\BodyPartPhysics.cs" />
+     <Compile Include="Assets\BusinessRagdollFace.cs" />
      <Compile Include="Assets\CameraTracker.cs" />
      <Compile Include="Assets\CannonAmmoHandler.cs" />
      <Compile Include="Assets\CannonAmmoPhysics.cs" />

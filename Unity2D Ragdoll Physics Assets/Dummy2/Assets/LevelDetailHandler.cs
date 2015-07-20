@@ -39,19 +39,19 @@ public class LevelDetailHandler
 		{ //level 13	    
 			100,1000,1500 }, //no change required
 		{ //level 14	    
-		 	100,4000,5500 },
+			100,4000,5500 }, //no change required
 		{ //level 15	    
-		 	100,999,999 },
+			100,3000,4000 }, //no change required
 		{ //level 16	    
-		 	100,999,999 },
-		{ //level 17	    
-		 	100,999,999 },
+			100,7000,8000 }, //no change required
+		{ //level 17	     
+			100,5000,6000 }, //no change required
 		{ //level 18	    
-		 	100,999,999 },
+			100,2000,3000 }, //no change required
 		{ //level 19	    
-		 	100,999,999 },
+			100,8500,10000 }, //no change required
 		{ //level 20	    
-			100,999,999 }
+			100,10000,11000 }
 	};
 
 
