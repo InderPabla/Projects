@@ -6,8 +6,12 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 
@@ -23,14 +27,16 @@ public class RemoteDesktopServer
 	{
 		int port = 6000;
 		
-		String IP = "192.168.0.14";
+		//String IP = "192.168.0.14";
 		
 		Dimension screenSize = null;
 		
-		ServerSocket serverSocket;	
+		ServerSocket serverSocket;
+		DatagramSocket udpServerSocket;
 		Socket socket;	
 		
 		Thread imageThread = null;	
+		Thread udpThread = null;	
 		
 		DataInputStream inputStream;	
 		DataOutputStream outputStream;	
@@ -45,7 +51,10 @@ public class RemoteDesktopServer
 			captureArea = new Rectangle(0,0,screenSize.width,screenSize.height);
 			init();
 			imageThread = new Thread(imageRunnable);
-	        imageThread.start();	
+	        imageThread.start();
+	        
+	        udpThread = new Thread(udpRunnable);
+	        udpThread.start();
 		}
 		
 		public void init()
@@ -97,5 +106,42 @@ public class RemoteDesktopServer
 				}
 	        }
 		};
+		
+		Runnable udpRunnable = new Runnable()
+		{
+			public void run ()
+	        {
+				try
+	            {
+					udpServerSocket= new DatagramSocket(port);
+					while(isRunning)
+					{
+					
+						String message =  receiveDataFromClient();
+						Scanner scan = new Scanner(message);
+						System.out.println(message);
+						String type = scan.next();
+						int x1 = scan.nextInt();
+						int y1 = scan.nextInt();
+						int x2 = scan.nextInt();
+						int y2 = scan.nextInt();
+						
+						captureArea = new Rectangle(x1,y1,x2-x1,y2-y1);
+					}
+	            }
+				catch(Exception error)
+				{
+					
+				}
+	        }
+		};
+		
+		public String receiveDataFromClient() throws IOException {
+			byte[] receiveData = new byte[1024];
+			DatagramPacket recievePacket = new DatagramPacket(receiveData,
+					receiveData.length);
+			udpServerSocket.receive(recievePacket);
+			return new String(recievePacket.getData());
+		}
 	}
 }

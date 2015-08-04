@@ -4,7 +4,11 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
 
 import javax.imageio.ImageIO;
@@ -28,11 +32,12 @@ public class Client
 	Thread imageThread = null;	
 	
 	Socket socket;	
+	DatagramSocket clientUDPSocket;
 	
 	DataInputStream inputStream;	
 	
 	BufferedImage bufferedImage = null; 
-		
+
 	public Client(int port, String IP)
 	{
 		this.port = port;
@@ -51,6 +56,7 @@ public class Client
 		try
         {
             socket = new Socket(IP, port);
+            clientUDPSocket = new DatagramSocket();
             inputStream = new DataInputStream(socket.getInputStream());
             
             screenSize.width = inputStream.readInt();
@@ -93,5 +99,30 @@ public class Client
 			}
         }
 	};
+	
+	public void sendUDPCaptureMessage(int x1, int y1, int x2, int y2)
+	{
+		String message = "Cap "+x1+" "+y1+" "+x2+" "+y2+" PADING";
+		System.out.println("("+x1+","+y1+") "+" ("+x2+","+y2+") "+message.getBytes().length);
+		
+		try
+		{
+			sendDataToServer(message, IP, port);
+		}
+		catch(Exception error)
+		{
+			System.out.println("Unable to send capture message.");
+		}
+	}
+	
+	public void sendDataToServer(String message, String serverIP, int serverPort) throws IOException 
+	{
+		byte[] sendData = new byte[1024];
+		sendData = message.getBytes();
+		InetAddress internetAddress = InetAddress.getByName(serverIP);
+		DatagramPacket sendPacket = new DatagramPacket(sendData,
+				sendData.length, internetAddress, serverPort);
+		clientUDPSocket.send(sendPacket);
+	}
 	
 }
