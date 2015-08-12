@@ -49,6 +49,8 @@ public class Client
 		init();
 		imageThread = new Thread(imageRunnable);
         imageThread.start();
+        
+        
 	}
 	
 	public void init()
@@ -114,6 +116,68 @@ public class Client
 			System.out.println("Unable to send capture message.");
 		}
 	}
+	
+	public void sendUDPCaptureReset()
+	{
+		sendUDPCaptureMessage(0,0,screenSize.width,screenSize.height);
+	}
+	
+	public void sendUDPMouseMessage(int x1, int y1)
+	{
+		String message = "Mou "+x1+" "+y1+" PADING";
+		
+		try
+		{
+			sendDataToServer(message, IP, port);
+		}
+		catch(Exception error)
+		{
+			System.out.println("Unable to send capture message.");
+		}
+	}
+	
+	public void sendUDPMouseMoveMessage(int x1, int y1)
+	{
+		String message = "Mov "+x1+" "+y1+" PADING";
+		
+		try
+		{
+			sendDataToServer(message, IP, port);
+		}
+		catch(Exception error)
+		{
+			System.out.println("Unable to send capture message.");
+		}
+	}
+	
+	public void sendUDPMouseActionMessage(int action)
+	{
+		String message = "Cli "+action+" PADING";
+		
+		try
+		{
+			sendDataToServer(message, IP, port);
+		}
+		catch(Exception error)
+		{
+			System.out.println("Unable to send capture message.");
+		}
+	}
+	
+	public void sendUDPKeyActionMessage(int key, int action)
+	{
+		String message = "Key "+key+" "+action+" PADING";
+		
+		try
+		{
+			sendDataToServer(message, IP, port);
+		}
+		catch(Exception error)
+		{
+			System.out.println("Unable to send capture message.");
+		}
+	}
+	
 	
 	public void sendDataToServer(String message, String serverIP, int serverPort) throws IOException 
 	{

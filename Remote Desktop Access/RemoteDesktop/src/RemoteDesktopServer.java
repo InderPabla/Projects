@@ -2,6 +2,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
@@ -12,8 +13,10 @@ import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.imageio.ImageIO;
+
 
 
 public class RemoteDesktopServer 
@@ -44,6 +47,8 @@ public class RemoteDesktopServer
 		boolean isRunning = true;
 		
 		Rectangle captureArea = null;
+		
+		Robot robotMove;
 		
 		public Server()
 		{
@@ -78,7 +83,7 @@ public class RemoteDesktopServer
 		{
 			public void run ()
 	        {
-				try
+				try 
 	            {
 					Robot robot = new Robot();
 					socket = serverSocket.accept();
@@ -113,6 +118,7 @@ public class RemoteDesktopServer
 	        {
 				try
 	            {
+					robotMove = new Robot();
 					udpServerSocket= new DatagramSocket(port);
 					while(isRunning)
 					{
@@ -121,12 +127,73 @@ public class RemoteDesktopServer
 						Scanner scan = new Scanner(message);
 						System.out.println(message);
 						String type = scan.next();
-						int x1 = scan.nextInt();
-						int y1 = scan.nextInt();
-						int x2 = scan.nextInt();
-						int y2 = scan.nextInt();
 						
-						captureArea = new Rectangle(x1,y1,x2-x1,y2-y1);
+						if(type.contains("Cap"))
+						{
+							int x1 = scan.nextInt();
+							int y1 = scan.nextInt();
+							int x2 = scan.nextInt();
+							int y2 = scan.nextInt();
+							
+							captureArea = new Rectangle(x1,y1,x2-x1,y2-y1);
+						}
+						else if(type.contains("Mou"))
+						{
+							int x1 = scan.nextInt();
+							int y1 = scan.nextInt();
+							robotMove.mouseMove(x1, y1);
+							Timer time = new Timer(true);
+							time.schedule(new Click(), 20); 
+						}
+						else if(type.contains("Mov"))
+						{
+							int x1 = scan.nextInt();
+							int y1 = scan.nextInt();
+							robotMove.mouseMove(x1, y1);
+						}
+						else if(type.contains("Cli"))
+						{
+							int x = scan.nextInt();
+							if(x == 0)
+							{
+								robotMove.mousePress(InputEvent.BUTTON1_MASK);
+							}
+							else if(x == 1)
+							{
+								robotMove.mouseRelease(InputEvent.BUTTON1_MASK);
+							}
+							else if(x == 2)
+							{
+								robotMove.mousePress(InputEvent.BUTTON2_MASK);
+							}
+							else if(x == 3)
+							{
+								robotMove.mouseRelease(InputEvent.BUTTON2_MASK);
+							}
+							else if(x == 4)
+							{
+								robotMove.mousePress(InputEvent.BUTTON3_MASK);
+							}
+							else if(x == 5)
+							{
+								robotMove.mouseRelease(InputEvent.BUTTON3_MASK);
+							}
+							
+						}
+						else if(type.contains("Key"))
+						{
+							int key = scan.nextInt();
+							int action = scan.nextInt();
+							if(action == 0)
+							{
+								robotMove.keyPress(key);
+							}
+							else if (action == 1)
+							{
+								robotMove.keyRelease(key);
+							}
+							
+						}
 					}
 	            }
 				catch(Exception error)
@@ -135,6 +202,15 @@ public class RemoteDesktopServer
 				}
 	        }
 		};
+		
+		public class Click extends TimerTask
+		{
+			public void run() 
+			{	
+				robotMove.mousePress(InputEvent.BUTTON1_MASK);
+				robotMove.mouseRelease(InputEvent.BUTTON1_MASK);
+			}
+		}
 		
 		public String receiveDataFromClient() throws IOException {
 			byte[] receiveData = new byte[1024];
